@@ -1,0 +1,33 @@
+.project-bg {
+
+    color: white;
+    
+    min-height: 350px;
+}
+
+.project-dev-shadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+.project-dev-shadow:hover {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
+    transform: scale(1.01);
+}
+
+.project-project-dev {
+    margin: 10px;
+    background: rgba(5, 43, 100, 0.904);
+    color: white;
+}
+
+.project-live-btn {
+    background: rgba(59, 75, 150, 0.795);
+    border: none;
+    color: white;
+    border-radius: 50px;
+    padding: 5px 15px;
+    margin-left: 8px;
+}

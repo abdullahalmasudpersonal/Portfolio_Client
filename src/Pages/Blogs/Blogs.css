@@ -1,0 +1,24 @@
+.blogs-bg {
+  color: white;
+  min-height: 350px;
+}
+
+.blogs-see-all-btn {
+  display: flex;
+  justify-content: end;
+}
+
+.blogs-see-all-btn button {
+  font-size: 15px;
+  margin-top: 10px;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  color: rgb(255, 255, 255);
+  background: none;
+  border: none;
+  transition: 0.5s;
+}
+.blogs-see-all-btn button:hover {
+  text-shadow: 1px 1px 2px rgb(255, 255, 255), 0 0 25px rgb(255, 255, 255),
+    0 0 5px rgb(255, 255, 255);
+  color: rgb(39, 18, 18);
+}

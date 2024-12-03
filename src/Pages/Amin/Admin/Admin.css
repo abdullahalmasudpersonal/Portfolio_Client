@@ -1,0 +1,108 @@
+.admin-bg-color {
+  background-image: linear-gradient(
+    rgb(237, 247, 252),
+    rgb(237, 241, 255),
+    rgb(247, 238, 255)
+  );
+}
+.admin-dev1-bg-color {
+  background-color: white;
+}
+
+/* ---------- ‍ant desing css ------------------------ */
+/* customStyles.css */
+
+.ant-menu {
+  border: none !important;
+  background-color: rgb(12, 20, 84);
+  /* background-color: transparent !important; */
+}
+
+.ant-menu-item {
+  /* background-color: rgb(255, 153, 0) !important; */
+  /* padding: 0 !important; */
+  color: rgb(255, 255, 255) !important;
+  font-weight: 600;
+  /* border: 1px solid rgb(255, 136, 39); */
+  background-color: rgb(38, 47, 116) !important;
+}
+
+.ant-menu-submenu-title {
+  background-color: rgb(51, 63, 156) !important;
+  /* padding: 0 !important; */
+  color: white !important;
+  font-weight: bold;
+}
+
+.ant-menu-submenu {
+  /* background-color: rgb(149, 149, 190) !important; */
+}
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 270px auto;
+  grid-gap: 20px;
+}
+/* @media screen and (max-width: 1399px) {
+  .dashboard {
+    margin: auto 10px;
+  }
+} */
+/* @media screen and (max-width: 650px) {
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+  }
+  .dashboard-dev1 {
+    margin: auto;
+  }
+} */
+.dashboard-dev1 {
+  height: 100%;
+  width: 270px;
+  padding: 15px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  background-color: rgb(12, 20, 84);
+}
+.dashboard-dev1 img {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  margin: auto;
+}
+.dashboard-dev1 button {
+  width: 100%;
+  height: 39px;
+  border-radius: 4px;
+  margin-top: 12px;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(34, 40, 90);
+  border: none;
+  transition-duration: 0.3s;
+}
+.dashboard-dev1 button:hover {
+  background-color: rgb(51, 60, 124);
+}
+.dashboard-dev2 {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  background-color: white;
+}
+@media screen and (max-width: 370px) {
+  .dashboard-dev1 {
+    max-width: 300px !important;
+  }
+}
+@media screen and (max-width: 330px) {
+  .dashboard-dev1 {
+    max-width: 280px !important;
+  }
+}

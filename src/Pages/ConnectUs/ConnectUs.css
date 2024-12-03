@@ -1,0 +1,21 @@
+
+.connect-us{
+    color: white;
+   /*  background: rgb(0, 37, 92); */
+    min-height: 350px;
+}
+.contact-submit-btn{
+    background-color: rgb(32, 78, 179);
+    color: white;
+    border: none;
+    transition: .3s;
+}
+.contact-submit-btn:hover{
+    background-color: rgb(17, 67, 177);
+}
+.addressIconAnimation>a{
+    transition: .4s;
+}
+.addressIconAnimation a:hover{
+    transform: translateY(-10px);
+}

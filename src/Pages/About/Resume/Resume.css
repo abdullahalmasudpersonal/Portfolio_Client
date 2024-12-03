@@ -1,0 +1,35 @@
+.resume-bg {
+    color: white;
+   /*  background: rgba(0, 34, 85, 0.932); */
+    min-height: 350px;
+}
+
+.resume-item {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid #eff7ff;
+    position: relative;
+}
+
+.resume-item::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 50px;
+    left: -9px;
+    top: 0;
+    background: rgba(0, 34, 85, 0.932);
+    border: 2px solid #ffffff;
+}
+
+.resume-item ul {
+    padding-left: 20px;
+}
+
+.resume-item ul li {
+    padding-bottom: 10px;
+}
+.resume-item:last-child {
+    padding-bottom: 0;
+  }
