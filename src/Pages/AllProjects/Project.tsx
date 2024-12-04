@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import "./Project.css";
 import Aos from "aos";
 import { TProject } from "../../types/project.types";
-import FeaturesCoustomize from "./FeaturesCoustomize";
 
 const Project = (project: TProject) => {
   useEffect(() => {
@@ -15,10 +14,7 @@ const Project = (project: TProject) => {
     _id,
     name,
     title,
-    description,
-    description2,
     features,
-    features2,
     image,
     live_link,
     client_side_code,

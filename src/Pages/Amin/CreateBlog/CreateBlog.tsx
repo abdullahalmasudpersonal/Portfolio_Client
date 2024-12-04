@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import { useState } from "react";
-import TextEditor from "../Blogs/TextEditor";
 import { toast } from "sonner";
 
 const CreateBlog = () => {
@@ -11,11 +10,13 @@ const CreateBlog = () => {
   const description = doc.body.textContent || "";
   console.log(description);
 
-  const handleChange = (content) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleChange = (content: any) => {
     setEditorContent(content);
   };
   const { register, handleSubmit, reset } = useForm();
-  const onSubmit = async (data) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSubmit = async (data: any) => {
     const proseed = window.confirm(`Are you sure Create New Blog ?`);
     if (proseed) {
       const newBlog = {
@@ -52,13 +53,11 @@ const CreateBlog = () => {
           <h3 className="text-center mt-3">Create Blog</h3>
           <form onSubmit={handleSubmit(onSubmit)} className="createProjectForm">
             <input
-              name="pName"
               placeholder="Blog Name"
               {...register("name", { required: true })}
               required
             />
             <input
-              name="blogImage"
               placeholder="Blog Image"
               {...register("image", { required: true })}
               required

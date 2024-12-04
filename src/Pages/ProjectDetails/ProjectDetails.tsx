@@ -1,18 +1,16 @@
-import React from "react";
 import { useParams } from "react-router-dom";
-import UseProjectDeatils from "../../Hooks/UseProjectDetails";
 import "./ProductDetails.css";
 import { Carousel } from "react-responsive-carousel";
 
-const ProjectDetails = ({}) => {
+const ProjectDetails = () => {
   const { id: projectId } = useParams();
-  const [projectDetails] = UseProjectDeatils([projectId]);
+  // const [projectDetails] = UseProjectDeatils([projectId]);
 
   // const {} = projectDetails?.data;
 
   // const porject_img1, porject_img2, porject_img3  = projectDetails?.data
 
-  console.log("sdfk;ljhsd", projectDetails?.data?.porject_img1);
+  console.log(projectId);
 
   return (
     <div className="productDetail">
@@ -20,7 +18,7 @@ const ProjectDetails = ({}) => {
       <div className="productDetailDev">
         <div className="productDetailDevFrist">
           <Carousel className="text-center pro-detail-casual">
-            <div>
+            {/* <div>
               <img src={projectDetails?.data?.porject_img1} />
             </div>
             <div>
@@ -28,7 +26,7 @@ const ProjectDetails = ({}) => {
             </div>
             <div>
               <img src={projectDetails?.data?.porject_img3} />
-            </div>
+            </div> */}
           </Carousel>
         </div>
 
