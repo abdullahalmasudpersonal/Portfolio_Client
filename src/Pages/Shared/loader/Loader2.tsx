@@ -1,7 +1,8 @@
+import "./Loader.css";
 const Loader2 = () => {
   return (
     <div>
-      <style>
+      {/*  <style>
         {`
            .loader2 {
   width: 50px;
@@ -43,9 +44,8 @@ const Loader2 = () => {
     transform: rotate(1turn);
   }
 }
-
           `}
-      </style>
+      </style> */}
       <div className="loader2"></div>
     </div>
   );

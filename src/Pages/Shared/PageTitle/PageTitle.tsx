@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import { Helmet } from "react-helmet-async";
 
-const PageTitle = ({ pageTitle }) => {
+const PageTitle = (pageTitle: string) => {
   return (
     <Helmet>
       <title>{pageTitle}&nbsp;|| Abdullah Al Masud</title>

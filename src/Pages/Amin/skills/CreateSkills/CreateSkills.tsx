@@ -151,6 +151,7 @@ const CreateSkills = () => {
                 showUploadList={false}
                 multiple={false}
               >
+                
                 <Button
                   type="primary"
                   icon={<UploadOutlined />}
@@ -161,6 +162,7 @@ const CreateSkills = () => {
                 >
                   Skill Image
                 </Button>
+                (200*200px)
               </Upload>
             </div>
           </Row>

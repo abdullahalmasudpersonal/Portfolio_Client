@@ -20,11 +20,13 @@ import CreateProject from "./Pages/Amin/Projects/createProject/CreateProject";
 /* slick-carousel */
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 //////////////// ant design & react-quill css /////////////////////////////
 import "antd/dist/reset.css";
 import "react-quill/dist/quill.snow.css";
 import DnDUpdateProject from "./Pages/Amin/Projects/DnDUpdateProject/DnDUpdateProject";
+import DndUpdateSkill from "./Pages/Amin/skills/DndUpdateSkill/DndUpdateSkill";
 //////////////// ant design & react-quill css /////////////////////////////
 
 function App() {
@@ -57,6 +59,7 @@ function App() {
           <Route path="dnd-update-project" element={<DnDUpdateProject />} />
           <Route path="skill-list" element={<ListSkills />} />
           <Route path="create-skill" element={<CreateSkills />} />
+          <Route path="dnd-update-skill" element={<DndUpdateSkill />} />
           <Route path="create-blog" element={<CreateBlog />} />
         </Route>
         <Route path="login" element={<Login />} />

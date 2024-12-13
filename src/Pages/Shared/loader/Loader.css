@@ -49,3 +49,45 @@
       200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
   }
 }
+
+/* --------------------------------------------- */
+.loader2 {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border-radius: 50%;
+  background: linear-gradient(
+        0deg,
+        rgba(0, 26, 255, 0.562) 30%,
+        #1900ff00 0 70%,
+        rgb(17, 0, 255) 0
+      )
+      50%/8% 100%,
+    linear-gradient(
+        90deg,
+        rgba(4, 0, 255, 0.671) 30%,
+        #0400ff00 0 70%,
+        rgb(0, 38, 255) 0
+      )
+      50%/100% 8%;
+  background-repeat: no-repeat;
+  animation: l23 1s infinite steps(12);
+}
+.loader2::before,
+.loader2::after {
+  content: "";
+  grid-area: 1/1;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.915;
+  transform: rotate(30deg);
+}
+.loader2::after {
+  opacity: 0.83;
+  transform: rotate(60deg);
+}
+@keyframes l23 {
+  100% {
+    transform: rotate(1turn);
+  }
+}

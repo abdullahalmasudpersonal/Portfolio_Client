@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Home.css";
 import "../../App.css";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
@@ -18,6 +18,43 @@ import Blogs from "../Blogs/Blogs";
 import About from "../About/About";
 
 const Home = () => {
+  const [visitorCount, setVisitorCount] = useState(0);
+  console.log(visitorCount, "visitorcount");
+
+  useEffect(() => {
+    // ভিজিটর কাউন্ট আপডেট করার জন্য API কল
+    const updateVisitorCount = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/visitor", {
+          method: "POST",
+        });
+        const data = await response.json();
+        setVisitorCount(data.count);
+      } catch (error) {
+        console.error("Error updating visitor count:", error);
+      }
+    };
+
+    updateVisitorCount();
+  }, []);
+
+  // useEffect(() => {
+  //   // বর্তমান ভিজিটর কাউন্ট দেখার জন্য API কল
+  //   const fetchVisitorCount = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "http://localhost:5000/api/visitors/create-visitor"
+  //       );
+  //       const data = await response.json();
+  //       setVisitorCount(data.count);
+  //     } catch (error) {
+  //       console.error("Error fetching visitor count:", error);
+  //     }
+  //   };
+
+  //   fetchVisitorCount();
+  // }, []);
+
   const resumeLink =
     "https://drive.google.com/uc?export=download&id=1LSXebQDEwTsL5Wq2nT8fHRON9x_7awxv";
   const [text] = useTypewriter({
@@ -74,7 +111,7 @@ const Home = () => {
             <section className="mt-3 homeSocialIcon">
               <a
                 className="btn btn-outline-light btn-floating m-1"
-                href="https://www.linkedin.com/in/abdullah-al-masud-48ab691b1"
+                href="https://www.linkedin.com/in/abdullahalmasud0"
                 target="_blank"
                 rel="noreferrer"
                 role="button"

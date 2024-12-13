@@ -62,6 +62,8 @@ const UpdateProject = () => {
         features2,
         client_side_code,
         server_side_code,
+        frontEndTechnology,
+        backEndTechnology,
       } = projectData.data;
 
       form.setFieldsValue({
@@ -75,6 +77,8 @@ const UpdateProject = () => {
         features2,
         client_side_code,
         server_side_code,
+        frontEndTechnology,
+        backEndTechnology,
       });
 
       const imageFiles = (image || []).map(
@@ -151,6 +155,8 @@ const UpdateProject = () => {
       live_link: data?.live_link,
       client_side_code: data?.client_side_code,
       server_side_code: data?.server_side_code,
+      frontEndTechnology: data?.frontEndTechnology,
+      backEndTechnology: data?.backEndTechnology,
       features: data?.features,
       features2: data?.features2,
       description: data?.description,
@@ -227,6 +233,24 @@ const UpdateProject = () => {
             <Form.Item
               label="Server Side Code"
               name="server_side_code"
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              label="Front-End Technology"
+              name="frontEndTechnology"
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              label="Back-End Technology"
+              name="backEndTechnology"
               rules={[{ required: true }]}
             >
               <Input />

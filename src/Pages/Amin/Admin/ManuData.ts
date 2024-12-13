@@ -47,7 +47,7 @@ const menuData: MenuData[] = [
         path: "/admin/create-project",
       },
       {
-        key: "create-project",
+        key: "update-project",
         title: "Update Project Index",
         path: "/admin/dnd-update-project",
       },
@@ -63,6 +63,11 @@ const menuData: MenuData[] = [
         key: "skill-create",
         title: "Create Skill",
         path: "/admin/create-skill",
+      },
+      {
+        key: "skill-update",
+        title: "Update Skill Index",
+        path: "/admin/dnd-update-skill",
       },
     ],
   },

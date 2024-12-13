@@ -25,6 +25,14 @@ const SkillApis = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.skill],
     }),
+    updateSkillSerialNumber: builder.mutation({
+      query: (skills) => ({
+        url: `/skills/update-skill-serial-number`,
+        method: "PATCH",
+        body: skills,
+      }),
+      invalidatesTags: [tagTypes.skill],
+    }),
   }),
 });
 
@@ -32,4 +40,5 @@ export const {
   useCreateSkillMutation,
   useGetSkillsQuery,
   useDeleteSkillMutation,
+  useUpdateSkillSerialNumberMutation,
 } = SkillApis;

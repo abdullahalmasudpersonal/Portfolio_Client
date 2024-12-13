@@ -11,5 +11,7 @@ export type TProject = {
   live_link: string;
   client_side_code: string;
   server_side_code: string;
+  frontEndTechnology: string;
+  backEndTechnology: string;
   createdAt: string;
 };
