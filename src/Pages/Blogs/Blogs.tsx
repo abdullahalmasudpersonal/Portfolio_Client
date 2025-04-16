@@ -25,7 +25,7 @@ const Blogs = () => {
         <div className="container mt-5 pt-5">
           <div className="row row-cols-1 row-cols-md-3 g-4">
             {blogs?.data?.slice(0, 3).map((blog: TBlog) => (
-              <Blog {...blog} />
+              <Blog key={blog._id} {...blog} />
             ))}
           </div>
           <div data-aos="fade-up-right" className="blogs-see-all-btn">

@@ -18,8 +18,7 @@ import Blogs from "../Blogs/Blogs";
 import About from "../About/About";
 
 const Home = () => {
-  const [visitorCount, setVisitorCount] = useState(0);
-  console.log(visitorCount, "visitorcount");
+  const [, /* visitorCount */ setVisitorCount] = useState(0);
 
   useEffect(() => {
     // ভিজিটর কাউন্ট আপডেট করার জন্য API কল

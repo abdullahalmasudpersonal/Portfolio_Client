@@ -65,6 +65,7 @@ const CreateSkills = () => {
 
     const formData = new FormData();
     formData.append("data", JSON.stringify(skillData));
+    formData.append("imageCategory", "skills");
     fileList.forEach((file) => {
       formData.append("file", file.originFileObj as File);
     });
@@ -151,7 +152,6 @@ const CreateSkills = () => {
                 showUploadList={false}
                 multiple={false}
               >
-                
                 <Button
                   type="primary"
                   icon={<UploadOutlined />}

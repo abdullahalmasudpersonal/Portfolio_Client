@@ -51,23 +51,18 @@ const CreateProject = () => {
               maxSizeMB: 1,
               useWebWorker: true,
             };
-
             const compressedBlob = await imageCompression(
               file.originFileObj as File,
               options
             );
-
             const compressedFile = new File([compressedBlob], file.name, {
               type: file.type,
               lastModified: file.originFileObj.lastModified,
             });
-
-            console.log(compressedFile, "compressedfile");
+            // console.log(compressedFile, "compressedfile");
             // Resize the compressed file to 1000 x 1000 pixels
             const resizedFile = await resizeImage(compressedFile, 1500, 900);
-
-            console.log(resizedFile, "resizefiles");
-
+            // console.log(resizedFile, "resizefiles");
             return {
               ...file,
               url: URL.createObjectURL(resizedFile),
@@ -110,16 +105,18 @@ const CreateProject = () => {
             features2: data?.features2,
             description: data?.description,
             description2: data?.description2,
+            frontEndTechnology: data?.frontEndTechnology,
+            backEndTechnology: data?.backEndTechnology,
           };
 
           const formData = new FormData();
           formData.append("data", JSON.stringify(projectData));
+          formData.append("imageCategory", "projects");
           fileList.forEach((file) => {
             formData.append("files", file.originFileObj as File);
           });
 
           const res = await createProject(formData).unwrap();
-          console.log(res);
           if (res?.success === true) {
             toast.success(res?.message, { position: "top-right" });
             form.resetFields();
@@ -189,6 +186,24 @@ const CreateProject = () => {
               <Input />
             </Form.Item>
           </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              label="Front End Technology"
+              name="frontEndTechnology"
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={24}>
+            <Form.Item
+              label="Back End Technology"
+              name="backEndTechnology"
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
           <Col xs={24}>
             <Form.Item
               label="Features"
@@ -198,13 +213,11 @@ const CreateProject = () => {
               <ReactQuill />
             </Form.Item>
           </Col>
-
           <Col xs={24}>
             <Form.Item label="Features 2" name="features2">
               <ReactQuill />
             </Form.Item>
           </Col>
-
           <Col xs={24}>
             <Form.Item
               label="Description"
@@ -214,7 +227,6 @@ const CreateProject = () => {
               <ReactQuill />
             </Form.Item>
           </Col>
-
           <Col xs={24}>
             <Form.Item label="Description 2" name="description2">
               <ReactQuill />
@@ -269,5 +281,6 @@ const CreateProject = () => {
     </div>
   );
 };
+// backEndTechnology;
 
 export default CreateProject;

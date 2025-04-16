@@ -3,7 +3,7 @@ import { RootState } from "../store";
 import { tagTypesList } from "../features/tagTypes";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${import.meta.env.VITE_mahsez_backend_url}`,
+  baseUrl: `${import.meta.env.VITE_portfolio_backend_url}`,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
