@@ -1,6 +1,7 @@
 .home-bg {
-  background: url("https://abdullahalmasud1.netlify.app/assets/img/hero-bg.jpg")
-    no-repeat top right;
+  /* background: url("https://abdullahalmasud1.netlify.app/assets/img/hero-bg.jpg")no-repeat top right; */
+  /* background: rgb(19, 2, 31); */
+  background: url("https://particles.js.org/samples/presets/firefly.html");
   height: 100vh;
   width: 100%;
   background-size: cover;
@@ -11,7 +12,7 @@
 
 .home-bg:before {
   content: " ";
-  background: rgba(36, 60, 119, 0.516);
+  /* background: rgba(36, 60, 119, 0.516); */
   position: absolute;
   bottom: 0;
   top: 0;
@@ -20,7 +21,10 @@
 }
 
 .home-down-bg {
-  background-color: rgb(12, 20, 84);
+  /* background-color: rgb(26, 6, 73); */
+  background: linear-gradient(to right, #070d29, #080129, #05071a, #020531);
+  /* backdrop-filter: blur(10px); */
+  /* background: rgb(1, 6, 22); */
 }
 
 .myNameDiv {

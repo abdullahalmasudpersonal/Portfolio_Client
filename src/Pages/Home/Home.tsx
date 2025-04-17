@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./Home.css";
 import "../../App.css";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
@@ -71,6 +71,7 @@ const Home = () => {
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
+
 
   return (
     <div>
