@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Home.css";
 import "../../App.css";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
@@ -16,6 +16,7 @@ import ConnectUs from "../ConnectUs/ConnectUs";
 import HProjects from "../HProjects/HProjects";
 import Blogs from "../Blogs/Blogs";
 import About from "../About/About";
+import MyParticles from "./ParticlesContainer";
 
 const Home = () => {
   const [, /* visitorCount */ setVisitorCount] = useState(0);
@@ -37,23 +38,6 @@ const Home = () => {
     updateVisitorCount();
   }, []);
 
-  // useEffect(() => {
-  //   // বর্তমান ভিজিটর কাউন্ট দেখার জন্য API কল
-  //   const fetchVisitorCount = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "http://localhost:5000/api/visitors/create-visitor"
-  //       );
-  //       const data = await response.json();
-  //       setVisitorCount(data.count);
-  //     } catch (error) {
-  //       console.error("Error fetching visitor count:", error);
-  //     }
-  //   };
-
-  //   fetchVisitorCount();
-  // }, []);
-
   const resumeLink =
     "https://drive.google.com/uc?export=download&id=1LSXebQDEwTsL5Wq2nT8fHRON9x_7awxv";
   const [text] = useTypewriter({
@@ -71,7 +55,6 @@ const Home = () => {
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
-
 
   return (
     <div>
@@ -198,6 +181,7 @@ const Home = () => {
 
       <div className="home-down-bg">
         <About />
+        <MyParticles />
         <Counter />
         <Skills />
         <Resume />
