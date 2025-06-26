@@ -177,7 +177,7 @@ const Home = () => {
           </MovingComponent>
         </div>
       </div>
-
+      {/* <HeroBackgroundParticles /> */}
       <div className="home-down-bg">
         <About />
         <Counter />

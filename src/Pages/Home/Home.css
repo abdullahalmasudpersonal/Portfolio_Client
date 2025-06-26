@@ -1,18 +1,39 @@
 .home-bg {
-  background: url("https://abdullahalmasud1.netlify.app/assets/img/hero-bg.jpg")no-repeat top right;
-  /* background: rgb(19, 2, 31); */
-  /* background: url("https://particles.js.org/samples/presets/firefly.html"); */
+  /* background: url("https://abdullahalmasud1.netlify.app/assets/img/hero-bg.jpg")no-repeat top right; */
+
+  /* background: linear-gradient(rgba(13, 11, 112, 0.685), rgba(3, 10, 53, 0.726)),
+    url("https://img.freepik.com/free-photo/vivid-blurred-colorful-background_58702-2554.jpg?semt=ais_items_boosted&w=740");
+  background-blend-mode: darken; */
+
   height: 100vh;
   width: 100%;
   background-size: cover;
   position: relative;
   display: flex;
   align-items: center;
-}
 
+   /* background: linear-gradient(-45deg, #0f172a, #072353, #010b44, #0f172a); */
+   /* background: linear-gradient(to right, #0a1442, #080129, #0f164b, #0f0150),url("https://abdullahalmasud1.netlify.app/assets/img/hero-bg.jpg")no-repeat top right; */
+  background: linear-gradient(to right, #070d29, #080129, #05071ae5, #020531ea),
+    url("https://abdullahalmasud1.netlify.app/assets/img/hero-bg.jpg")no-repeat top right;
+  background-blend-mode: darken;
+  /* background-size: 400% 400%; */
+  animation: gradientShift 15s ease infinite;
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 20%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0% 20%;
+  }
+}
 .home-bg:before {
   content: " ";
-  background: rgba(36, 60, 119, 0.516);
+  /* background: rgba(36, 60, 119, 0.516); */
   position: absolute;
   bottom: 0;
   top: 0;

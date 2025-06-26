@@ -2,7 +2,7 @@
 .allproject-bg {
   color: white;
   min-height: 800px;
-  background: rgb(0, 41, 102);
+  background: linear-gradient(to right, #070d29, #080129, #05071a, #020531);
 }
 
 /* ------------------Project------------------------- */

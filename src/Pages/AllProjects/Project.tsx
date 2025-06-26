@@ -61,7 +61,6 @@ const Project = (project: TProject) => {
           <p className=" ">{title}</p>
           <div className="">
             <small>
-              {/* <FeaturesCoustomize description={features} /> */}
               <div dangerouslySetInnerHTML={{ __html: features }} />
               <ul>{/*  <li>{porject_detail_4}</li> */}</ul>
             </small>

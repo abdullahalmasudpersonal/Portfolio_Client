@@ -37,8 +37,10 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^7.0.1",
     "react-simple-typewriter": "^5.0.1",
+    "react-tsparticles": "^2.12.2",
     "redux-persist": "^6.0.0",
-    "sonner": "^1.7.0"
+    "sonner": "^1.7.0",
+    "tsparticles": "^3.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
