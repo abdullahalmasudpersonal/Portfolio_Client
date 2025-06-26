@@ -16,7 +16,6 @@ import ConnectUs from "../ConnectUs/ConnectUs";
 import HProjects from "../HProjects/HProjects";
 import Blogs from "../Blogs/Blogs";
 import About from "../About/About";
-import MyParticles from "./ParticlesContainer";
 
 const Home = () => {
   const [, /* visitorCount */ setVisitorCount] = useState(0);
@@ -181,7 +180,6 @@ const Home = () => {
 
       <div className="home-down-bg">
         <About />
-        <MyParticles />
         <Counter />
         <Skills />
         <Resume />

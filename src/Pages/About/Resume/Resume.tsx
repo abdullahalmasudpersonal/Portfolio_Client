@@ -44,7 +44,7 @@ const Resume = () => {
 
               <div data-aos="zoom-in-right" className="resume-item">
                 <h5 className="text-uppercase">Al Quran & Islamc Studies</h5>
-                <h5 className="my-3">2021 - 2024 (Running)</h5>
+                <h5 className="my-3">2021 - 2025 (4th Year Running)</h5>
                 <p>
                   <em>Islamic Arabic University, Mohammadpur, Dhaka</em>{" "}
                 </p>
