@@ -141,7 +141,7 @@ const Home = () => {
                 <i className="fab fa-twitter"></i>
               </a>
 
-              <a
+              {/* <a
                 className="btn btn-outline-light btn-floating m-1"
                 href="https://dribbble.com/Abdullah540"
                 role="button"
@@ -149,7 +149,7 @@ const Home = () => {
                 rel="noreferrer"
               >
                 <i className="fab fa-dribbble"></i>
-              </a>
+              </a> */}
             </section>
           </MovingComponent>
 

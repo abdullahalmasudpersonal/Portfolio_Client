@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* import { fab } from '@fortawesome/free-brands-svg-icons'; */
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import profileImg from "../../Assets/img/Profile/profile-img.jpg";
+import profileImg from "../../Assets/img/Profile/abdullah_al_masud_img.jpg";
 import "./About.css";
 //import MovingComponent from "react-moving-text";
 import { library } from "@fortawesome/fontawesome-svg-core";
