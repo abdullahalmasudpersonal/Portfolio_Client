@@ -9,7 +9,6 @@ import Loader2 from "../../../Shared/loader/Loader2";
 const ListProject = () => {
   const navigate = useNavigate();
   const { data: projectData, isLoading } = useGetAllProjectQuery({});
-  console.log(projectData);
 
   const navigateToUpdateProject = (id: string) => {
     navigate(`/admin/update-project/${id}`);
@@ -155,7 +154,7 @@ const ListProject = () => {
 
             <Popconfirm
               title="Are you sure you want to delete this product?"
-              //   onConfirm={() => deleteProduct(item?.key)}
+                // onConfirm={() => deleteProduct(item?.key)}
               okText="Yes"
               cancelText="No"
             >
@@ -168,6 +167,7 @@ const ListProject = () => {
       },
     },
   ];
+
   return (
     <div>
       {isLoading ? (

@@ -36,7 +36,7 @@ const HProjects = () => {
             <Project key={project._id} {...project} />
           ))}
         </div>
-        <div data-aos="zoom-in-right" className="blogs-see-all-btn mt-3">
+        <div className="blogs-see-all-btn mt-3">
           <Link to="/allprojects">
             <button>See All Projects</button>
           </Link>

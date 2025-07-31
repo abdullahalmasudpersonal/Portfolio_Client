@@ -24,7 +24,7 @@ const Home = () => {
     // ভিজিটর কাউন্ট আপডেট করার জন্য API কল
     const updateVisitorCount = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/visitor", {
+        const response = await fetch("https://portfolio-server-omega-coral.vercel.app/api/visitor", {
           method: "POST",
         });
         const data = await response.json();
@@ -37,8 +37,9 @@ const Home = () => {
     updateVisitorCount();
   }, []);
 
-  const resumeLink =
-    "https://drive.google.com/uc?export=download&id=1LSXebQDEwTsL5Wq2nT8fHRON9x_7awxv";
+  // const resumeLink =
+  //   "https://drive.google.com/uc?export=download&id=1LSXebQDEwTsL5Wq2nT8fHRON9x_7awxv";
+
   const [text] = useTypewriter({
     words: [
       "Developer",
@@ -141,15 +142,6 @@ const Home = () => {
                 <i className="fab fa-twitter"></i>
               </a>
 
-              {/* <a
-                className="btn btn-outline-light btn-floating m-1"
-                href="https://dribbble.com/Abdullah540"
-                role="button"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="fab fa-dribbble"></i>
-              </a> */}
             </section>
           </MovingComponent>
 
@@ -163,7 +155,10 @@ const Home = () => {
             fillMode="both"
           >
             <section className="resumeIconAnimation">
-              <Link download="Abdullah Al Masud Resume" to={resumeLink}>
+              <Link to="https://drive.google.com/file/d/1LSXebQDEwTsL5Wq2nT8fHRON9x_7awxv/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {" "}
                 <button
                   className="resume-download-btn btn btn-outline-light btn-floating fw-bold mt-4"
@@ -177,12 +172,11 @@ const Home = () => {
           </MovingComponent>
         </div>
       </div>
-      {/* <HeroBackgroundParticles /> */}
       <div className="home-down-bg">
         <About />
         <Counter />
-        <Skills />
         <Resume />
+        <Skills />
         <HProjects />
         <Blogs />
         <ConnectUs />

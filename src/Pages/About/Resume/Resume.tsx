@@ -32,9 +32,9 @@ const Resume = () => {
                   </em>
                 </p>
                 <ul>
-                  <li>Portland par 127,Orlando, FL</li>
                   <li>+8801726457771</li>
                   <li>abdullahalmasud772@gmail.com</li>
+                  <li>Jatrabari Dhaka - 1204</li>
                 </ul>
               </div>
             </div>

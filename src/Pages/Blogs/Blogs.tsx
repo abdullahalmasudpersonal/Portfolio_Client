@@ -28,7 +28,7 @@ const Blogs = () => {
               <Blog key={blog._id} {...blog} />
             ))}
           </div>
-          <div data-aos="fade-up-right" className="blogs-see-all-btn">
+          <div className="blogs-see-all-btn">
             <Link to="/allblogs">
               <button>See All Blogs</button>
             </Link>

@@ -107,7 +107,7 @@ const About = () => {
                       <li className="mt-3">
                         {" "}
                         <FontAwesomeIcon icon={faChevronRight} /> &#160;{" "}
-                        <strong>Degree:</strong> <span>Honors (Runnig)</span>
+                        <strong>Degree:</strong> <span>Honors (4th Year Runnig)</span>
                       </li>
                       <li className="mt-3">
                         {" "}
