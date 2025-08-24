@@ -69,7 +69,7 @@ const Project = (project: TProject) => {
 
         <div className="p-3 ">
           <small className="d-flex justify-content-end live_client_server_btn">
-            <a href={`/projects/${_id}`} rel="noreferrer" target="_blank">
+            <a href={`/projects/${_id}`}  target="_blank">
               <button className="project-live-btn">
                 <FontAwesomeIcon icon={faCircleInfo} /> Details
               </button>
