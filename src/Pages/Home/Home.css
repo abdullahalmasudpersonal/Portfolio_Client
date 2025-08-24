@@ -14,11 +14,11 @@
 
    /* background: linear-gradient(-45deg, #0f172a, #072353, #010b44, #0f172a); */
    /* background: linear-gradient(to right, #0a1442, #080129, #0f164b, #0f0150),url("https://abdullahalmasud1.netlify.app/assets/img/hero-bg.jpg")no-repeat top right; */
-  background: linear-gradient(to right, #070d29, #080129, #05071ae5, #020531ea),
+  background: linear-gradient(to right, #001131, #061a38, #061b42, #001130),
     url("https://abdullahalmasud1.netlify.app/assets/img/hero-bg.jpg")no-repeat top right;
   background-blend-mode: darken;
   /* background-size: 400% 400%; */
-  animation: gradientShift 25s ease infinite;
+  animation: gradientShift 40s ease infinite;
 }
 @keyframes gradientShift {
   0% {
@@ -43,7 +43,7 @@
 
 .home-down-bg {
   /* background-color: rgb(26, 6, 73); */
-  background: linear-gradient(to right, #0b143a, #0c0335, #02051b, #030f41);
+  background: linear-gradient(to right, #001233, #032057, #002363, #001131);
   /* backdrop-filter: blur(10px); */
   /* background: rgb(1, 6, 22); */
 }

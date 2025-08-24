@@ -2,7 +2,7 @@
 .allproject-bg {
   color: white;
   min-height: 800px;
-  background: linear-gradient(to right, #070d29, #080129, #05071a, #020531);
+    background: linear-gradient(to right, #001233, #032057, #002363, #001131);
 }
 
 /* ------------------Project------------------------- */
@@ -15,10 +15,7 @@
 }
 
 .project-dev-shadow:hover {
-  /* box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset; */
-  transform: scale(1.01);
+  transform: translateY(-8px);
 }
 
 .projects-projects-dev {

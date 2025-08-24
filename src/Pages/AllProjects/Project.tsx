@@ -22,7 +22,7 @@ const Project = (project: TProject) => {
   } = project;
 
   return (
-    <div data-aos="zoom-in-right" className="col">
+    <div data-aos="zoom-in-right">
       <div className="project-dev-shadow">
         <div
           id="carouselExampleSlidesOnly"
@@ -58,18 +58,13 @@ const Project = (project: TProject) => {
               <FontAwesomeIcon icon={faEye} style={{ fontSize: "15px" }} />{" "}
             </a>
           </h5>
-          <p className=" ">{title}</p>
-          <div className="">
-            <small>
-              <div dangerouslySetInnerHTML={{ __html: features }} />
-              <ul>{/*  <li>{porject_detail_4}</li> */}</ul>
-            </small>
-          </div>
+          <p>{title}</p>
+          <div style={{fontSize:'13px'}} dangerouslySetInnerHTML={{ __html: features }} />
         </div>
 
         <div className="p-3 ">
           <small className="d-flex justify-content-end live_client_server_btn">
-            <a href={`/projects/${_id}`}  target="_blank">
+            <a href={`/projects/${_id}`} target="_blank">
               <button className="project-live-btn">
                 <FontAwesomeIcon icon={faCircleInfo} /> Details
               </button>

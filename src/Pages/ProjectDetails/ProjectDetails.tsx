@@ -38,7 +38,7 @@ const ProjectDetails = () => {
         >
           <Loader2 />
         </div>
-      ) : (<div className="container" style={{ marginTop: '150px' }}>
+      ) : (<div className="container" style={{ marginTop: '150px', marginBottom:'30px' }}>
         <Row gutter={[16, 16]}>
           <Col sm={24} md={24} lg={12}>
             <Carousel className="text-center pro-detail-casual">

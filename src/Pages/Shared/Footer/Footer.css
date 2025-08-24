@@ -1,7 +1,7 @@
 .footer {
     position: relative;
     width: 100%;
-    background: linear-gradient(to left, #020c2b, #091136, #080c20);
+    background: linear-gradient(to left, #001233, #0a3179,#001233);
     min-height: 100px;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .desigined-by {
-    color: rgb(110, 136, 255);
+    color: rgb(94, 157, 230);
 }
 
 .wave {

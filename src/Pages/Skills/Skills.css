@@ -19,7 +19,7 @@
 }
 .skills-Icon-div:hover {
   transform: translateY(-8px);
-  background: rgba(35, 35, 78, 0.514);
+  background: #073a7e;
 }
 .skills-Icon-div img {
   width: 100px;

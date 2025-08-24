@@ -1,8 +1,7 @@
 .allblogs-bg {
-    background: rgb(0, 54, 126);
+      background: linear-gradient(to right, #001233, #032057, #002363, #001131);
     color: white;
     min-height: 800px;
-    background: rgb(0, 41, 102);
 }
 
 .bolg-dev-dev {

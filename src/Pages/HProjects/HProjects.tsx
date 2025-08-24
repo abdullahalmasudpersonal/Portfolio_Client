@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Aos from "aos";
 import { useGetAllProjectQuery } from "../../redux/features/project/projectApi";
 import { TProject } from "../../types/project.types";
+import { Col, Row } from "antd";
 library.add(fab);
 
 const HProjects = () => {
@@ -30,12 +31,11 @@ const HProjects = () => {
           quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
           fugiat sit in iste officiis commodi quidem hic quas.
         </p>
-
-        <div className="row row-cols-1 row-cols-md-3 g-4 project-dev-bg">
+        <Row gutter={[16, 16]}>
           {projectData?.data?.slice(0, 3).map((project: TProject) => (
-            <Project key={project._id} {...project} />
+            <Col md={24} lg={8}> <Project key={project._id} {...project} /></Col>
           ))}
-        </div>
+        </Row>
         <div className="blogs-see-all-btn mt-3">
           <Link to="/allprojects">
             <button>See All Projects</button>
