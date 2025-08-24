@@ -1,7 +1,7 @@
 /*----------------- attar detail start---------- */
 .productDetail {
   overflow: hidden;
-  background-color: rgb(12, 20, 84);
+  background: linear-gradient(to right, #001233, #032057, #002363, #001131);
   color: white;
 }
 /*----------------- attar detail end---------- */
