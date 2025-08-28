@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
-import "../../App.css";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import MovingComponent from "react-moving-text";
-// import "animation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
@@ -21,7 +19,6 @@ const Home = () => {
   const [, /* visitorCount */ setVisitorCount] = useState(0);
 
   useEffect(() => {
-    // ভিজিটর কাউন্ট আপডেট করার জন্য API কল
     const updateVisitorCount = async () => {
       try {
         const response = await fetch("https://portfolio-server-omega-coral.vercel.app/api/visitor", {
@@ -36,9 +33,6 @@ const Home = () => {
 
     updateVisitorCount();
   }, []);
-
-  // const resumeLink =
-  //   "https://drive.google.com/uc?export=download&id=1LSXebQDEwTsL5Wq2nT8fHRON9x_7awxv";
 
   const [text] = useTypewriter({
     words: [
@@ -57,7 +51,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <div id="home" className="home-bg">
         <div className="container">
           <div data-aos="fade-down" className="myNameDiv">
@@ -172,6 +166,7 @@ const Home = () => {
           </MovingComponent>
         </div>
       </div>
+
       <div className="home-down-bg">
         <About />
         <Counter />
@@ -181,7 +176,7 @@ const Home = () => {
         <Blogs />
         <ConnectUs />
       </div>
-    </div>
+    </>
   );
 };
 

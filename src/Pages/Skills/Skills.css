@@ -1,6 +1,6 @@
 .skills-icon {
-  display: flex;
-  gap: 40px;
+  /* display: flex; */
+  gap: 20px 10px;
 }
 .skills-Icon-div {
   width: 170px;

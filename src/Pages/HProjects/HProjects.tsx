@@ -37,7 +37,7 @@ const HProjects = () => {
           ))}
         </Row>
         <div className="blogs-see-all-btn mt-3">
-          <Link to="/allprojects">
+          <Link to="/all-projects">
             <button>See All Projects</button>
           </Link>
         </div>

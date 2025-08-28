@@ -21,6 +21,7 @@ const Skills = () => {
         >
           CORE SKILLS
         </h3>
+        
         <div className="skills-icon">
           {skillData?.data?.map((item: TSkill) => (
             <div data-aos="fade-right">
@@ -30,8 +31,8 @@ const Skills = () => {
               </div>
             </div>
           ))}
-
         </div>
+        
         {/* <div className="skills-icon pt-5">
           {skillData?.data?.map((item: TSkill) => (
             <div
@@ -46,7 +47,6 @@ const Skills = () => {
             </div>
           ))}
         </div> */}
-        <div className="mass"></div>
       </div>
     </div>
   );
