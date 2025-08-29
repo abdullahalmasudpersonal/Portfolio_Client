@@ -13,7 +13,7 @@ import Resume from "../About/Resume/Resume";
 import ConnectUs from "../ConnectUs/ConnectUs";
 import HProjects from "../HProjects/HProjects";
 import Blogs from "../Blogs/Blogs";
-import About from "../About/About";
+import About from "./About/About";
 
 const Home = () => {
   const [, /* visitorCount */ setVisitorCount] = useState(0);
@@ -83,18 +83,18 @@ const Home = () => {
           </MovingComponent>
 
           <MovingComponent
-            type="fadeInFromRight"
+            type="fadeIn"
             duration="2000ms"
-            delay="0s"
+            delay="1s"
             direction="normal"
             timing="ease-in-out"
             iteration="1"
             fillMode="both"
           >
-            <section className="homeSocialIcon" style={{margin:'20px 0'}}>
+            <section className="homeSocialIcon" style={{ margin: '20px 0' }}>
               {
                 socialMedia.map((item) => (
-                  <a style={{marginRight:'10px'}}
+                  <a style={{ marginRight: '10px' }}
                     className={`btn btn-outline-light btn-floating ${item.class}`}
                     href={item.href}
                     target="_blank"
@@ -117,7 +117,7 @@ const Home = () => {
             iteration="1"
             fillMode="both"
           >
-            <section className="resumeIconAnimation" style={{marginTop:'5px'}}>
+            <section className="resumeIconAnimation" style={{ marginTop: '5px' }}>
               <Link to="https://drive.google.com/file/d/1LSXebQDEwTsL5Wq2nT8fHRON9x_7awxv/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -138,12 +138,12 @@ const Home = () => {
 
       <div className="home-down-bg">
         <About />
-        <Counter />
+        {/* <Counter />
         <Resume />
         <Skills />
         <HProjects />
         <Blogs />
-        <ConnectUs />
+        <ConnectUs /> */}
       </div>
     </>
   );

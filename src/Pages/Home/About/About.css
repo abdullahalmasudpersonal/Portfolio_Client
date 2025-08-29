@@ -1,13 +1,9 @@
-.about-bg {
-    color: white;
-    /* background: rgb(0, 37, 92); */
-}
-
 .about-about-headline {
     position: relative;
+    /* padding-top: 50px; */
     padding-bottom: 20px;
+    text-align: center;
 }
-
 .about-about-headline::before {
     content: "";
     position: absolute;
@@ -18,7 +14,6 @@
     bottom: 1px;
     left: calc(50% - 50px);
 }
-
 .about-about-headline::after {
     content: "";
     position: absolute;
@@ -31,8 +26,11 @@
 }
 
 .about-about-info {
+    margin: auto;
+    max-width: 1180px;
+    padding-top: 20px;
     padding-bottom: 20px;
-    text-align: justify;
+    text-align: center;
 }
 
 /* @media screen and (min-width:1120px) {
@@ -41,3 +39,4 @@
         padding-right: 50px;
     }
 } */
+

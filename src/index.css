@@ -6,4 +6,10 @@
 
 .customContainer{
   max-width: 1300px;
+  margin: auto;
+}
+@media screen and (max-width: 1320px) {
+  .customContainer {
+    margin: 0 10px !important;
+  }
 }
