@@ -1,7 +1,7 @@
 .antNavber {
-  max-width: 1320px;
-  height: 64px; 
-  padding: 0 30px;
+  max-width: 1300px;
+  height: 64px;
+  padding: 0 40px;
   margin: auto;
   display: flex;
   align-items: center;
@@ -10,6 +10,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 50px;
+  border: 1px solid rgba(173, 173, 173, 0.171);
 }
 .portfolioTitle {
   color: rgb(0, 21, 92);
@@ -17,10 +18,23 @@
   font-size: x-large;
   font-weight: bold;
   font-family: "Playfair Display", serif;
-   margin: 0;
+  margin: 0;
 }
-@media screen and (max-width: 1330px) {
+@media screen and (max-width: 1310px) {
   .antNavber {
-     margin: 0 5px !important;
+    margin: 0 5px !important;
   }
+}
+
+.menuItem {
+  color: white;
+  padding: 7px 15px;
+  margin-right: 10px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none !important;
+}
+.menuItem:hover {
+  color: rgb(173, 202, 255);
 }
