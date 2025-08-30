@@ -11,9 +11,9 @@ import Counter from "./Counter/Counter";
 import Skills from "./Skills/Skills";
 import Resume from "../About/Resume/Resume";
 import ConnectUs from "../ConnectUs/ConnectUs";
-import HProjects from "../HProjects/HProjects";
 import Blogs from "../Blogs/Blogs";
 import About from "./About/About";
+import HProjects from "../HProjects/HProjects";
 
 const Home = () => {
   const [, /* visitorCount */ setVisitorCount] = useState(0);
@@ -139,7 +139,9 @@ const Home = () => {
       <div className="home-down-bg">
         <About />
         <Counter />
+        <Resume />
         <Skills />
+        <HProjects />
         {/* <Counter />
         <Resume />
         <Skills />

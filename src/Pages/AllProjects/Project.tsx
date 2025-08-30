@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import "./Project.css";
 import Aos from "aos";
 import { TProject } from "../../types/project.types";
+import { Carousel } from "antd";
 
 const Project = (project: TProject) => {
   useEffect(() => {
@@ -23,7 +24,18 @@ const Project = (project: TProject) => {
 
   return (
     <div data-aos="zoom-in-right">
-      <div className="project-dev-shadow">
+      <div>
+          <Carousel autoplay effect="fade" >
+          {
+            image?.map((imgSrc,index) => (
+              <div key={index}>
+                <img src={imgSrc} alt="banner img" height={250} />
+              </div>
+            ))
+          }
+        </Carousel>
+      </div>
+      {/* <div className="project-dev-shadow">
         <div
           id="carouselExampleSlidesOnly"
           className="carousel slide"
@@ -81,7 +93,7 @@ const Project = (project: TProject) => {
             </a>
           </small>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
