@@ -7,8 +7,8 @@ import MovingComponent from "react-moving-text";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-import Counter from "../Counter/Counter";
-import Skills from "../Skills/Skills";
+import Counter from "./Counter/Counter";
+import Skills from "./Skills/Skills";
 import Resume from "../About/Resume/Resume";
 import ConnectUs from "../ConnectUs/ConnectUs";
 import HProjects from "../HProjects/HProjects";
@@ -138,6 +138,8 @@ const Home = () => {
 
       <div className="home-down-bg">
         <About />
+        <Counter />
+        <Skills />
         {/* <Counter />
         <Resume />
         <Skills />

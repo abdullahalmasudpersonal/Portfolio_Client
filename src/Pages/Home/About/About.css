@@ -1,30 +1,3 @@
-.about-about-headline {
-    position: relative;
-    /* padding-top: 50px; */
-    padding-bottom: 20px;
-    text-align: center;
-}
-.about-about-headline::before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 100px;
-    height: 1px;
-    background: #ddd;
-    bottom: 1px;
-    left: calc(50% - 50px);
-}
-.about-about-headline::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 35px;
-    height: 3px;
-    background: #0563bb;
-    bottom: 0;
-    left: calc(50% - 17.5px);
-}
-
 .about-about-info {
     margin: auto;
     max-width: 1180px;
@@ -32,11 +5,4 @@
     padding-bottom: 20px;
     text-align: center;
 }
-
-/* @media screen and (min-width:1120px) {
-    .about-about-info {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-} */
 

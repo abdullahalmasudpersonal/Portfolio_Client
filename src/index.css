@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-.customContainer{
+.customContainer {
   max-width: 1300px;
   margin: auto;
 }
@@ -12,4 +12,30 @@
   .customContainer {
     margin: 0 10px !important;
   }
+}
+
+.globalSectionHeadline {
+  text-align: center;
+  color: white;
+  padding-bottom: 20px;
+}
+.globalSectionHeadline::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 50px);
+}
+.globalSectionHeadline::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 35px;
+  height: 3px;
+  background: #0563bb;
+  bottom: 0px;
+   left: calc(50% - 17.5px);
 }

@@ -20,7 +20,7 @@ const About = () => {
 
   return (
     <div id="about" style={{ color: 'white', padding: '60px 0' }} className="customContainer">
-      <h3 data-aos="flip-right" className="about-about-headline">ABOUT</h3>
+      <h3 data-aos="flip-right" className="globalSectionHeadline">ABOUT</h3>
       <p className="about-about-info" data-aos="fade-right" >
         The goal of my life as a career is to become a high quality web
         developer. At this early stage of my career, my goal is to work in a

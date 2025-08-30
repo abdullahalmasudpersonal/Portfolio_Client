@@ -1,0 +1,15 @@
+.numberBGColor {
+  position: relative;
+  background-image: url('@/Assets/img/BackgroundImage/6005990.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.numberBGColor::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #001a3fc7;
+}
+
