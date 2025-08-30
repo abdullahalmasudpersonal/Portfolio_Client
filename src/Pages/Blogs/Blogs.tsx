@@ -5,6 +5,7 @@ import Aos from "aos";
 import Blog from "../AllBlogs/Blog";
 import { useGetBlogsQuery } from "../../redux/features/blogs/blogsApi";
 import { TBlog } from "../../types/blogs.types";
+import { Col, Row } from "antd";
 
 const Blogs = () => {
   const { data: blogs } = useGetBlogsQuery({});
@@ -14,26 +15,21 @@ const Blogs = () => {
   }, []);
 
   return (
-    <div id="blogs" className="blogs-bg">
-      <div className="pt-3">
-        <h3
-          data-aos="fade-down"
-          className="text-center pt-5 mt-5 mb-5 numbers-numbers-headline"
-        >
-          BLOGS
-        </h3>
-        <div className="container mt-5 pt-5">
-          <div className="row row-cols-1 row-cols-md-3 g-4">
-            {blogs?.data?.slice(0, 3).map((blog: TBlog) => (
-              <Blog key={blog._id} {...blog} />
-            ))}
-          </div>
-          <div className="blogs-see-all-btn">
-            <Link to="/allblogs">
-              <button>See All Blogs</button>
-            </Link>
-          </div>
-        </div>
+    <div id="blogs" className="customContainer" style={{ padding: '60px 0', color: 'white' }}>
+      <h3 data-aos="fade-down" className="globalSectionHeadline" style={{ marginBottom: '70px' }}>
+        BLOGS
+      </h3>
+      <Row gutter={[16, 16]}>
+        {blogs?.data?.slice(0, 3).map((blog: TBlog) => (
+          <Col sm={24} md={12} lg={8}>
+            <Blog key={blog._id} {...blog} />
+          </Col>
+        ))}
+      </Row>
+       <div >
+        <Link to="/allblogs">
+          <button>See All Blogs</button>
+        </Link>
       </div>
     </div>
   );

@@ -142,6 +142,7 @@ const Home = () => {
         <Resume />
         <Skills />
         <HProjects />
+        <Blogs />
         {/* <Counter />
         <Resume />
         <Skills />

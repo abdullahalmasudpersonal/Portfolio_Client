@@ -32,7 +32,7 @@ const Project = (project: TProject) => {
 `;
 
     return (
-        <ProjectDiv data-aos="zoom-in-right" /* className="projectDiv" */>
+        <div data-aos="zoom-in-right" /* className="projectDiv" */>
             <Carousel effect="fade" >
                 {
                     image?.map((imgSrc, index) => (
@@ -74,7 +74,7 @@ const Project = (project: TProject) => {
                     </a>
                 </small>
             </div>
-        </ProjectDiv>
+        </div>
     );
 };
 
