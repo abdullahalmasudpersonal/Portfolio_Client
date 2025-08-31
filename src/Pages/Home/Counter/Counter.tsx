@@ -18,9 +18,9 @@ const Counter = () => {
 
   const numbers = [
     { id: 1, name: "Language", target: 3, ex: 0, icon: faCode, fontsize: '20px', padding: "14.6px 12.5px", },
-    { id: 1, name: "Fremwork", target: 5, ex: 0, icon: faGear, fontsize: '24px', padding: "13.5px 13.5px", },
-    { id: 1, name: "Projects", target: 10, plus: '+', icon: faFileAlt, fontsize: '24px', padding: "12.5px 15.5px", },
-    { id: 1, name: "Certificate", target: 2, ex: 0, icon: faAward, fontsize: '28px', padding: "10px 14px", },
+    { id: 2, name: "Fremwork", target: 5, ex: 0, icon: faGear, fontsize: '24px', padding: "13.5px 13.5px", },
+    { id: 3, name: "Projects", target: 10, plus: '+', icon: faFileAlt, fontsize: '24px', padding: "12.5px 15.5px", },
+    { id: 4, name: "Certificate", target: 2, ex: 0, icon: faAward, fontsize: '28px', padding: "10px 14px", },
   ]
 
   return (
@@ -30,7 +30,7 @@ const Counter = () => {
         <Row gutter={[16, 16]}>
           {
             numbers.map((item) => (
-              <Col xs={24} md={12} lg={6} >
+              <Col xs={24} md={12} lg={6} key={item?.id}>
                 <div data-aos="fade-down" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', gap: '10px', }}>
                   <FontAwesomeIcon style={{ backgroundColor: "white", color: "rgba(0, 89, 172, 1)", padding: item.padding, fontSize: item.fontsize, borderRadius: "50%", border: "4px solid #999999ff" }} icon={item.icon} />
                   <h1 style={{ margin: 0 }}>

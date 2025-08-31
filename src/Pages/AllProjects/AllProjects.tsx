@@ -1,6 +1,6 @@
+import Project from "@/components/ui/projects/Project";
 import { useGetAllProjectQuery } from "../../redux/features/project/projectApi";
 import { TProject } from "../../types/project.types";
-import Project from "./Project";
 import "./Project.css";
 
 const AllProjects = () => {

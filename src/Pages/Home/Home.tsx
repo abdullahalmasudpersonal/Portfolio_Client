@@ -94,7 +94,7 @@ const Home = () => {
             <section className="homeSocialIcon" style={{ margin: '20px 0' }}>
               {
                 socialMedia.map((item) => (
-                  <a style={{ marginRight: '10px' }}
+                  <a key={item?.id} style={{ marginRight: '10px' }}
                     className={`btn btn-outline-light btn-floating ${item.class}`}
                     href={item.href}
                     target="_blank"
@@ -143,12 +143,7 @@ const Home = () => {
         <Skills />
         <HProjects />
         <Blogs />
-        {/* <Counter />
-        <Resume />
-        <Skills />
-        <HProjects />
-        <Blogs />
-        <ConnectUs /> */}
+        <ConnectUs />
       </div>
     </>
   );

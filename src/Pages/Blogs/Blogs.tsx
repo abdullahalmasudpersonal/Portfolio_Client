@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Blogs.css";
 import Aos from "aos";
-import Blog from "../AllBlogs/Blog";
 import { useGetBlogsQuery } from "../../redux/features/blogs/blogsApi";
 import { TBlog } from "../../types/blogs.types";
 import { Col, Row } from "antd";
+import Blog from "@/components/ui/blogs/Blog";
 
 const Blogs = () => {
   const { data: blogs } = useGetBlogsQuery({});
@@ -21,12 +20,12 @@ const Blogs = () => {
       </h3>
       <Row gutter={[16, 16]}>
         {blogs?.data?.slice(0, 3).map((blog: TBlog) => (
-          <Col sm={24} md={12} lg={8}>
-            <Blog key={blog._id} {...blog} />
+          <Col sm={24} md={12} lg={8} key={blog?._id}>
+            <Blog key={blog._id} {...blog} /> 
           </Col>
         ))}
       </Row>
-       <div >
+      <div >
         <Link to="/allblogs">
           <button>See All Blogs</button>
         </Link>

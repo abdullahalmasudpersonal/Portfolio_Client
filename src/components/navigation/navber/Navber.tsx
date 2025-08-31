@@ -29,7 +29,7 @@ const Navber = () => {
                 {screens.lg ? (
                     <div>
                         {
-                            menuItems.map((item) => <a className="menuItem" href={item.href} >{item?.label}</a>)
+                            menuItems.map((item) => <a key={item?.key} className="menuItem" href={item.href} >{item?.label}</a>)
                         }
                     </div>
                 ) : (

@@ -4,6 +4,14 @@
   margin: 0;
 }
 
+/* -------------------------------- */
+.ant-btn:focus,
+.ant-btn:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+/* ------------------------------- */
+
 .customContainer {
   max-width: 1300px;
   margin: auto;

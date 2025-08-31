@@ -1,0 +1,35 @@
+.blogDiv {
+  box-shadow: rgba(60, 64, 67, 0.67) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.47) 0px 2px 6px 2px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+   transition: 0.5s;
+}
+.blogDiv:hover {
+  transform: translateY(-8px);
+}
+.bolg-read-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bolg-read-more button {
+  transition: 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 10px;
+  font-weight: bold;
+  padding: 0 13px;
+  color: rgb(255, 255, 255);
+  height: 40px;
+  min-width: 140px;
+  background: rgb(0, 54, 126);
+  border-radius: 50px;
+  border: 2px solid white;
+}
+.bolg-read-more button:hover {
+  grid-gap: 15px;
+}

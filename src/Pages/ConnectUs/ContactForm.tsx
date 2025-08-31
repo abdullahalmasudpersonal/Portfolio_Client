@@ -1,89 +1,96 @@
-import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { Form, Input, Button, Col, Row, message } from "antd";
+import { useState } from "react";
 
-const Result = () => {
-  return (
-    <p>Your message has been successfully sent. I will contact you soon.</p>
-  );
-};
+type Message = {
+  fullName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 const ContactForm = () => {
-  const [result, setResult] = useState(false);
-  const form = useRef<HTMLFormElement | null>(null);
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sendEmail = (e: any) => {
-    e.preventDefault();
-
-    if (form.current) {
-      emailjs
-        .sendForm(
-          "service_lbjmldd",
-          "template_j7t6o0f",
-          form.current, // Connect `form.current` correctly
-          "C2bvyJo1JsGP7LPbX"
-        )
-        .then(
-          (result) => {
-            console.log("Email Sent:", result.text);
-          },
-          (error) => {
-            console.error("Error:", error.text);
-          }
-        );
-    } else {
-      console.error("Form reference is null.");
-    }
-
-    e.target.reset();
-    setResult(true);
+  const sendEmail = (values: Message) => {
+     setLoading(true);
+    emailjs
+      .send(
+        "service_lbjmldd",
+        "template_j7t6o0f",
+        values,
+        "C2bvyJo1JsGP7LPbX"
+      )
+      .then(
+        () => {
+          message.success("Email sent successfully! I will contact you soon.");
+           form.resetFields();
+            setLoading(false);
+        },
+        (error) => {
+          message.error("Failed to send email. Please try again.");
+          console.error("Error:", error.text);
+           setLoading(false);
+        }
+      );
   };
-  setTimeout(() => {
-    setResult(false);
-  }, 30000);
 
   return (
-    <form className="mb-5" ref={form} onSubmit={sendEmail}>
-      <div className="d-flex gap-3 mb-4">
-        <input
-          style={{ borderRadius: "4px", height: "40px" }}
-          className="w-50 ps-2"
-          type="text"
-          placeholder="Your Name"
-          required
-          name="fullName"
-        />
-        <input
-          style={{ borderRadius: "4px", height: "40px" }}
-          className="w-50 ps-2"
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-        />
-      </div>
-      <input
-        style={{ borderRadius: "4px", height: "40px" }}
-        className="w-100 ps-2"
-        type="text"
-        placeholder="Subject"
-        required
-      />
-      <textarea
-        style={{ height: "150px", borderRadius: "4px" }}
-        className="w-100 mt-4 ps-2"
-        placeholder="Message"
-        required
+    <Form form={form} layout="vertical" onFinish={sendEmail}>
+      <Row gutter={16}>
+        <Col span={12}>
+          <Form.Item
+            label={<span style={{ color: "white" }}>Your Name</span>}
+            name="fullName"
+            rules={[{ required: true, message: "Please enter your name!" }]}
+          >
+            <Input placeholder="Your Name" />
+          </Form.Item>
+        </Col>
+
+        <Col span={12}>
+          <Form.Item
+            label={<span style={{ color: "white" }}>Your Email</span>}
+            name="email"
+            rules={[
+              { required: true, message: "Please enter your email!" },
+              { type: "email", message: "Please enter a valid email!" },
+            ]}
+          >
+            <Input placeholder="Your Email" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Form.Item
+        label={<span style={{ color: "white" }}>Subject</span>}
+        name="subject"
+        rules={[{ required: true, message: "Please enter a subject!" }]}
+      >
+        <Input placeholder="Subject" />
+      </Form.Item>
+
+      <Form.Item
+        label={<span style={{ color: "white" }}>Message</span>}
         name="message"
-      />
-      <input
-        style={{ height: "40px", borderRadius: "50px" }}
-        className="px-5 mt-3 contact-submit-btn"
-        type="submit"
-        value="Send Message"
-      />
-      <div>{result ? <Result /> : null}</div>
-    </form>
+        rules={[{ required: true, message: "Please enter your message!" }]}
+      >
+        <Input.TextArea rows={6} placeholder="Message" />
+      </Form.Item>
+
+      <Form.Item>
+        <Button
+          type="primary"
+          htmlType="submit"
+          shape="round"
+          size="large"
+          loading={loading}
+        >
+          Send Message
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 

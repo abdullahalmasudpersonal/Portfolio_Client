@@ -2,7 +2,7 @@ import { TProject } from "@/types/project.types";
 import { faCircleInfo, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Carousel } from "antd";
-import styled from "styled-components";
+import './Project.css';
 
 const Project = (project: TProject) => {
 
@@ -17,22 +17,8 @@ const Project = (project: TProject) => {
         server_side_code,
     } = project;
 
-    const ProjectDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border-radius: 5px;
-  box-shadow: rgba(60, 64, 67, 0.67) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.47) 0px 2px 6px 2px;
-  transition: 0.5s;
-
-  &:hover {
-    transform: translateY(-8px);
-  }
-`;
-
     return (
-        <div data-aos="zoom-in-right" /* className="projectDiv" */>
+        <div data-aos="zoom-in-right" className="projectDiv">
             <Carousel effect="fade" >
                 {
                     image?.map((imgSrc, index) => (
@@ -42,7 +28,7 @@ const Project = (project: TProject) => {
                     ))
                 }
             </Carousel>
-            <div style={{ padding: '10px', flexGrow: 1, display: "flex", flexDirection: "column" }}>
+            <div style={{ padding: '10px', flexGrow: 1, display: "flex", flexDirection: "column", }}>
                 <h5 style={{ margin: '15px 0 5px', }}>
                     <a
                         href={live_link}

@@ -1,21 +1,20 @@
+.staticContactInfoIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: 0.4s;
+  cursor: pointer;
+}
 
-.connect-us{
-    color: white;
-   /*  background: rgb(0, 37, 92); */
-    min-height: 350px;
+.staticContactInfoIcon:hover {
+  transform: translateY(-10px);
+  background-color: white;
+  color: rgb(41, 41, 41);
 }
-.contact-submit-btn{
-    background-color: rgb(32, 78, 179);
-    color: white;
-    border: none;
-    transition: .3s;
-}
-.contact-submit-btn:hover{
-    background-color: rgb(17, 67, 177);
-}
-.addressIconAnimation>a{
-    transition: .4s;
-}
-.addressIconAnimation a:hover{
-    transform: translateY(-10px);
-}
+
+
