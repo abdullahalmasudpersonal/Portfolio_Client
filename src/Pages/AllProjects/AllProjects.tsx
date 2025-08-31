@@ -1,25 +1,21 @@
 import Project from "@/components/ui/projects/Project";
 import { useGetAllProjectQuery } from "../../redux/features/project/projectApi";
 import { TProject } from "../../types/project.types";
-import "./Project.css";
+import { Col, Row } from "antd";
 
 const AllProjects = () => {
   const { data: projects } = useGetAllProjectQuery({});
 
   return (
-    <div
-      className="allproject-bg "
-      style={{ paddingTop: "130px", paddingBottom: "70px" }}
-    >
-      <div className="container">
-        <div
-          className="row row-cols-1 row-cols-md-3 g-4"
-          style={{ paddingBottom: "100px" }}
-        >
+    <div style={{ paddingTop: "130px",minHeight:"calc(100vh - 200px)", paddingBottom: "70px", color: 'white', background: "linear-gradient(to right, #001233, #032057, #002363, #001131)" }}>
+      <div className="customContainer">
+        <Row gutter={[16, 16]}>
           {projects?.data?.map((project: TProject) => (
-            <Project key={project._id} {...project} />
+            <Col sm={24} md={12} lg={8}>
+              <Project key={project._id} {...project} />
+            </Col>
           ))}
-        </div>
+        </Row>
       </div>
     </div>
   );

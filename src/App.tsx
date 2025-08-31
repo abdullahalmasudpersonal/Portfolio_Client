@@ -14,7 +14,16 @@ import routes from "./Routes/routes";
 
 //////////////// ant design & react-quill css /////////////////////////////
 
+//////////// Aos ///////////////////
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import Aos from "aos";
+
 function App() {
+    useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   const renderRoutes = (routes: RouteType[]) =>
     routes.map(({ path, index, element, children }, i) => {
       if (index) {

@@ -1,22 +1,16 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import profileImg from "@/Assets/img/Profile/abdullah_al_masud_img.jpg";
 import "./About.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import Aos from "aos";
 import "aos/dist/aos.css";
 import { Col, Row } from "antd";
 library.add(fab);
 
 
 const About = () => {
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
-
 
   return (
     <div id="about" style={{ color: 'white', padding: '60px 0' }} className="customContainer">

@@ -4,16 +4,14 @@ import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import MovingComponent from "react-moving-text";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import Counter from "./Counter/Counter";
 import Skills from "./Skills/Skills";
-import Resume from "../About/Resume/Resume";
-import ConnectUs from "../ConnectUs/ConnectUs";
-import Blogs from "../Blogs/Blogs";
+import ConnectUs from "./ConnectUs/ConnectUs";
+import Blogs from "./Blogs/Blogs";
 import About from "./About/About";
-import HProjects from "../HProjects/HProjects";
+import Projects from "./Projects/Projects";
+import Resume from "./Resume/Resume";
 
 const Home = () => {
   const [, /* visitorCount */ setVisitorCount] = useState(0);
@@ -46,10 +44,6 @@ const Home = () => {
     deleteSpeed: 80,
   });
 
-  useEffect(() => {
-    AOS.init({ duration: 2000 });
-  }, []);
-
   const socialMedia = [
     { id: 1, iconName: 'fab fa-linkedin-in', href: 'https://www.linkedin.com/in/abdullahalmasud0', class: '', },
     { id: 2, iconName: 'fab fa-github', href: 'https://github.com/abdullahalmasudpersonal', class: '', },
@@ -66,7 +60,6 @@ const Home = () => {
             <h4 data-aos="fade-down" className="display-3 headlineName" style={{ fontFamily: 'serif', margin: 0 }}>Abdullah Al Masud</h4>
             <h4 data-aos="fade-down" className="display-3 " style={{ fontFamily: 'serif', margin: 0 }}>Abdullah Al Masud</h4>
           </div>
-
           <MovingComponent
             type="fadeInFromLeft"
             duration="2000ms"
@@ -141,7 +134,7 @@ const Home = () => {
         <Counter />
         <Resume />
         <Skills />
-        <HProjects />
+        <Projects />
         <Blogs />
         <ConnectUs />
       </div>

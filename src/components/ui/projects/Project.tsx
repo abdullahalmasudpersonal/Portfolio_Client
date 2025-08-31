@@ -18,7 +18,7 @@ const Project = (project: TProject) => {
     } = project;
 
     return (
-        <div data-aos="zoom-in-right" className="projectDiv">
+        <div className="projectDiv">
             <Carousel effect="fade" >
                 {
                     image?.map((imgSrc, index) => (

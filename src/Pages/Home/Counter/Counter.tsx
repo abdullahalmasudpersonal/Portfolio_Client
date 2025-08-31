@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./Counter.css";
 import CountUp from "react-countup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,13 +7,9 @@ import {
   faFileAlt,
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
-import Aos from "aos";
 import { Col, Row } from "antd";
 
 const Counter = () => {
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
 
   const numbers = [
     { id: 1, name: "Language", target: 3, ex: 0, icon: faCode, fontsize: '20px', padding: "14.6px 12.5px", },

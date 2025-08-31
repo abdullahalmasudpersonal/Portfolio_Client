@@ -1,12 +1,7 @@
-import { useEffect } from "react";
 import "./Resume.css";
-import Aos from "aos";
 import { Col, Row } from "antd";
 
 const Resume = () => {
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
 
   return (
     <div id="resume" className="customContainer" style={{ color: 'white', padding: '60px 0' }}>

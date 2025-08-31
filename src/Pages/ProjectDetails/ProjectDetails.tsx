@@ -22,8 +22,6 @@ const ProjectDetails = () => {
     description,
     features2,
   } = projectDetails?.data || {};
-  console.log(projectDetails);
-  // const isLoadings = true
 
   return (
     <div className="productDetail">

@@ -1,17 +1,11 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Aos from "aos";
-import { useGetBlogsQuery } from "../../redux/features/blogs/blogsApi";
-import { TBlog } from "../../types/blogs.types";
-import { Col, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import Blog from "@/components/ui/blogs/Blog";
+import { useGetBlogsQuery } from "@/redux/features/blogs/blogsApi";
+import { TBlog } from "@/types/blogs.types";
 
 const Blogs = () => {
   const { data: blogs } = useGetBlogsQuery({});
-
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
 
   return (
     <div id="blogs" className="customContainer" style={{ padding: '60px 0', color: 'white' }}>
@@ -20,14 +14,14 @@ const Blogs = () => {
       </h3>
       <Row gutter={[16, 16]}>
         {blogs?.data?.slice(0, 3).map((blog: TBlog) => (
-          <Col sm={24} md={12} lg={8} key={blog?._id}>
-            <Blog key={blog._id} {...blog} /> 
+          <Col sm={24} md={12} lg={8} key={blog?._id} data-aos="fade-up" data-aos-duration="3000">
+            <Blog key={blog._id} {...blog} />
           </Col>
         ))}
       </Row>
-      <div >
-        <Link to="/allblogs">
-          <button>See All Blogs</button>
+      <div style={{ display: 'flex', justifyContent: 'end', marginTop: '20px' }} >
+        <Link to="/all-blog">
+          <Button color="primary" variant="solid" shape="round">See All Blog</Button>
         </Link>
       </div>
     </div>
