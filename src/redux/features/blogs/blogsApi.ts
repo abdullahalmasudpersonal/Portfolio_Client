@@ -8,7 +8,24 @@ const BlogApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getSingleBlog: builder.query({
+      query: (blogId) => ({
+        url: `/blogs/${blogId}`,
+        method: "GET",
+      }),
+    }),
+    createBlog: builder.mutation({
+      query: (blogData) => ({
+        url: "/blogs/create-blog",
+        method: "POST",
+        body: blogData,
+      }),
+    }),
   }),
 });
 
-export const { useGetBlogsQuery } = BlogApi;
+export const {
+  useGetBlogsQuery,
+  useGetSingleBlogQuery,
+  useCreateBlogMutation,
+} = BlogApi;
