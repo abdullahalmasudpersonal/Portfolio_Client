@@ -21,7 +21,7 @@ const Blogs = () => {
       </Row>
       <div style={{ display: 'flex', justifyContent: 'end', marginTop: '20px' }} >
         <Link to="/all-blog">
-          <Button color="primary" variant="solid" shape="round">See All Blog</Button>
+          <Button style={{background:'#014688ff', color:'white'}}>See All Blog</Button>
         </Link>
       </div>
     </div>

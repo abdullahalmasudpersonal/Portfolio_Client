@@ -28,7 +28,7 @@ const Projects = () => {
       </Row>
       <div style={{ marginTop: "20px", display: "flex", justifyContent: "flex-end" }}>
         <Link to="/all-project">
-          <Button type="primary" shape="round">See All Project</Button>
+          <Button style={{background:'#014688ff', color:'white'}}>See All Project</Button>
         </Link>
       </div>
 

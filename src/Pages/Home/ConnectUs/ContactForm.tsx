@@ -81,11 +81,10 @@ const ContactForm = () => {
 
       <Form.Item>
         <Button
-          type="primary"
           htmlType="submit"
           shape="round"
           size="large"
-          loading={loading}
+          loading={loading} style={{background:'#014688ff', color:'white', padding:'5px 20px 8px 20px'}}
         >
           Send Message
         </Button>

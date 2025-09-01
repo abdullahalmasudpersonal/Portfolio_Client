@@ -57,8 +57,14 @@ const Home = () => {
       <div id="home" className="home-bg">
         <div className="homeDiv">
           <div className="headlineNameDiv">
-            <h4 data-aos="fade-down" className="display-3 headlineName" style={{ fontFamily: 'serif', margin: 0 }}>Abdullah Al Masud</h4>
-            <h4 data-aos="fade-down" className="display-3 " style={{ fontFamily: 'serif', margin: 0 }}>Abdullah Al Masud</h4>
+            <h4 data-aos="fade-down" className="display-3 headlineName" style={{
+              fontFamily: 'serif', margin: 0, fontSize: 'clamp(32px, 9vw, 70px)',
+              wordBreak: 'break-word'
+            }}>Abdullah Al Masud</h4>
+            <h4 data-aos="fade-down" className="display-3 " style={{
+              fontFamily: 'serif', margin: 0, fontSize: 'clamp(32px, 9vw, 70px)',
+              wordBreak: 'break-word'
+            }}>Abdullah Al Masud</h4>
           </div>
           <MovingComponent
             type="fadeInFromLeft"
@@ -70,7 +76,7 @@ const Home = () => {
             fillMode="both"
           >
             <h3 className="home-my-title">
-              I&apos;m <span style={{ fontWeight: "bold" }}>{text}</span>
+              I&apos;m <span>{text}</span>
               <Cursor />
             </h3>
           </MovingComponent>

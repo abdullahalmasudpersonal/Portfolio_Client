@@ -1,10 +1,4 @@
-// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "../node_modules/bootstrap/dist/js/bootstrap.min";
 import { Route, Routes } from "react-router-dom";
-/* slick-carousel */
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 //////////////// ant design & react-quill css /////////////////////////////
 import "antd/dist/reset.css";

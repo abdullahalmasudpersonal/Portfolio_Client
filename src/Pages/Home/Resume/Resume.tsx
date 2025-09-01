@@ -6,7 +6,7 @@ const Resume = () => {
   return (
     <div id="resume" className="customContainer" style={{ color: 'white', padding: '60px 0' }}>
       <h3 data-aos="flip-up" className="globalSectionHeadline" style={{marginBottom:'70px'}}>RESUME</h3>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]} style={{padding:"0 10px"}}>
         <Col md={24} lg={12}>
           <div data-aos="zoom-in-right">
             <h3 className="mb-4">Summary</h3>

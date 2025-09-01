@@ -10,12 +10,12 @@
 .blogDiv:hover {
   transform: translateY(-8px);
 }
-.bolg-read-more {
+/* .bolg-read-more {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.bolg-read-more button {
+} */
+/* .bolg-read-more button {
   transition: 0.5s;
   display: flex;
   align-items: center;
@@ -32,4 +32,4 @@
 }
 .bolg-read-more button:hover {
   grid-gap: 15px;
-}
+} */

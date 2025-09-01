@@ -16,6 +16,7 @@ import ListSkills from "@/Pages/Admin/skills/listSkills/ListSkills";
 import Home from "@/Pages/Home/Home";
 import ProjectDetails from "@/Pages/ProjectDetails/ProjectDetails";
 import { RouteType } from "@/types/routes.types";
+import BlogDetails from "@/Pages/BlogDetails/BlogDetails";
 
 
 
@@ -26,8 +27,9 @@ const routes: RouteType[] = [
     children: [
       { index: true, element: <Home /> },
       { path: 'all-project', element: <AllProjects /> },
-      { path: 'projects/:id', element: <ProjectDetails /> },
+      { path: 'project/:id', element: <ProjectDetails /> },
       { path: 'all-blog', element: <AllBlogs /> },
+      { path: 'blog/:id', element: <BlogDetails /> },
     ]
   },
   {

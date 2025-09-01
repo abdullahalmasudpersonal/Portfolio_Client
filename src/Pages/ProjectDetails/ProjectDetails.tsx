@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import "./ProductDetails.css";
-import { Carousel } from "react-responsive-carousel";
 import { useGetSingleProjectQuery } from "../../redux/features/project/projectApi";
 import Loader2 from "../Shared/loader/Loader2";
-import { Col, Row } from "antd";
+import { Col, Image, Row } from "antd";
+import { useState } from "react";
 
 const ProjectDetails = () => {
   const { id: projectId } = useParams();
@@ -23,43 +23,53 @@ const ProjectDetails = () => {
     features2,
   } = projectDetails?.data || {};
 
+  const [selected, setSelected] = useState(0);
+
   return (
-    <div className="productDetail">
-      {isLoading ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: '800px'
-          }}
-        >
-          <Loader2 />
-        </div>
-      ) : (<div className="container" style={{ marginTop: '150px', marginBottom:'30px' }}>
-        <Row gutter={[16, 16]}>
-          <Col sm={24} md={24} lg={12}>
-            <Carousel className="text-center pro-detail-casual">
-              {image?.map((img: string, index: number) => (
-                <div key={index}>
-                  <img
-                    style={{ borderRadius: "5px" }}
-                    src={
-                      img.includes("res.cloudinary.com")
-                        ? img.replace("/upload/", "/upload/f_auto,q_auto/")
-                        : img
-                    }
-                    srcSet={`${img}?w=300 300w, ${img}?w=600 600w, ${img}?w=1200 1200w`}
-                    sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
-                    alt={`Product Image ${index}`}
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </Carousel>
-          </Col>
-          <Col sm={24} md={24} lg={12}>
-            <div>
+    <div style={{ color: 'white', background: "linear-gradient(to right, #001233, #032057, #002363, #001131)", paddingTop: "130px", paddingBottom: "70px", minHeight: "calc(100vh - 200px)", }}>
+      <div className="customContainer">
+        {isLoading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: '800px'
+            }}
+          >
+            <Loader2 />
+          </div>
+        ) : (
+          <Row gutter={[16, 16]}>
+            <Col sm={24} md={24} lg={12} style={{}}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+                <Image
+                  src={image[selected]}
+                  alt="banner img"
+                  style={{ borderRadius: 5, width: "100%", height: "100%", objectFit: "cover", }}
+                />
+                <Row gutter={[10, 10]} justify="center">
+                  {image.map((img: string, index: number) => (
+                    <Col key={index}>
+                      <Image
+                        src={img}
+                        width={90}
+                        height={60}
+                        preview={false}
+                        onClick={() => setSelected(index)}
+                        style={{
+                          border:
+                            selected === index ? "2px solid #005ee2ff" : "1px solid #ccc",
+                          borderRadius: 6,
+                          cursor: "pointer",
+                        }}
+                      />
+                    </Col>
+                  ))}
+                </Row>
+              </div>
+            </Col>
+            <Col sm={24} md={24} lg={12}>
               <div
                 style={{
                   borderRadius: "5px",
@@ -116,7 +126,7 @@ const ProjectDetails = () => {
                   Back-End Technology: {backEndTechnology}
                 </p>
               </div>
-              <div style={{ marginTop: "20px" }}>
+              <div style={{ marginTop: "20px" }} className="features-container">
                 <h5>Features</h5>
                 <p dangerouslySetInnerHTML={{ __html: features2 }} />
               </div>
@@ -124,10 +134,10 @@ const ProjectDetails = () => {
                 <h5>Description</h5>
                 <p dangerouslySetInnerHTML={{ __html: description }} />
               </div>
-            </div>
-          </Col>
-        </Row>
-      </div>)}
+            </Col>
+          </Row>
+        )}
+      </div>
     </div>
   );
 };

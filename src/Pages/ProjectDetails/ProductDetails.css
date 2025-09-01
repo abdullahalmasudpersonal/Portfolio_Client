@@ -1,31 +1,4 @@
-/*----------------- attar detail start---------- */
-.productDetail {
-  overflow: hidden;
-  background: linear-gradient(to right, #001233, #032057, #002363, #001131);
-  color: white;
-}
-/*----------------- attar detail end---------- */
-
-.pro-detail-casual .thumbs {
-  padding: 0;
-  margin: 0;
-}
-
-.pro-detail-casual .thumbs .thumb {
-  border: 1px solid gray !important;
-  border-radius: 3px;
-}
-
-.pro-detail-casual .thumbs .selected {
-  border: 1px solid rgb(255, 119, 0) !important;
-  border-radius: 3px;
-}
-
-.pro-detail-casual .thumb:hover {
-  border: 1px solid rgb(255, 119, 0) !important;
-  border-radius: 3px;
-}
-
-.pro-detail-casual .control-dots {
-  display: none;
+.features-container ul {
+  padding-left: 25px;
+  margin: 0;        
 }

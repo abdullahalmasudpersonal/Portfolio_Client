@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-/* -------------------------------- */
+/* --------------ant design focus ------------------ */
 .ant-btn:focus,
 .ant-btn:focus-visible {
   outline: none !important;
@@ -12,6 +12,7 @@
 }
 /* ------------------------------- */
 
+/* ------------ custom container ------------------ */
 .customContainer {
   max-width: 1300px;
   margin: auto;
@@ -22,6 +23,7 @@
   }
 }
 
+/* ----------globalSectionHeadline------------- */
 .globalSectionHeadline {
   text-align: center;
   color: white;
@@ -47,3 +49,4 @@
   bottom: 0px;
    left: calc(50% - 17.5px);
 }
+/* ------------------globalSectionHeadline----------------------- */

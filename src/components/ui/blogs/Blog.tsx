@@ -2,9 +2,12 @@ import { TBlog } from '@/types/blogs.types';
 import './Blog.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const Blog = (blog: TBlog) => {
-    const { name, image, description, date } = blog;
+    const navigate = useNavigate();
+    const {_id, name, image, description, date } = blog;
     return (
         <div className='blogDiv'>
             <div style={{}}>
@@ -17,8 +20,8 @@ const Blog = (blog: TBlog) => {
             <div style={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                 <h5 style={{ textAlign: 'center', paddingTop: '10px' }}>{name}</h5>
                 <p style={{ margin: '0', fontWeight: '700', flexGrow: 1 }}>{description}</p>
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }} className="bolg-read-more">
-                    <button>
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }} >
+                    <Button style={{ background: '#014688ff', color: 'white', }} onClick={() => navigate(`/blog/${_id}`)}>
                         <span>Read More </span>
                         <span>
                             <FontAwesomeIcon
@@ -30,7 +33,7 @@ const Blog = (blog: TBlog) => {
                                 icon={faChevronRight}
                             />
                         </span>
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

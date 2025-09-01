@@ -41,10 +41,9 @@
   justify-content: center;
   margin: auto;
   color: #00146d;
-  /* padding-top: 100px; */
   position: relative;
 }
-@media screen and (max-width: 1310px) {
+@media screen and (max-width: 1320px){
   .homeDiv {
     margin: 0 10px !important;
   }
@@ -96,10 +95,7 @@
 /*--------------Home part end ----------- */
 
 .home-down-bg {
-  /* background-color: rgb(26, 6, 73); */
   background: linear-gradient(to right, #001233, #032057, #002363, #001131);
-  /* backdrop-filter: blur(10px); */
-  /* background: rgb(1, 6, 22); */
 }
 
 .home-my-title {
@@ -108,11 +104,7 @@
   font-family: Lucida Bright;
   color: #003481bb;
   -webkit-text-stroke: .5px rgb(255, 255, 255);
-}
-
-.home-my-title > span {
-  color: #003481;
-  -webkit-text-stroke: .5px rgb(255, 255, 255);
+  font-size:clamp(22px, 4vw, 28px);
 }
 
 .homeSocialIcon > a {

@@ -10,10 +10,13 @@ export default defineConfig({
     },
   },
   define: {
-    "process.env": {}, 
+    "process.env": {},
   },
   server: {
-    host: true, 
-    port: 5173, 
+    host: true,
+    port: 5173,
+  },
+  optimizeDeps: {
+    include: ["react-tsparticles", "tsparticles"],
   },
 });

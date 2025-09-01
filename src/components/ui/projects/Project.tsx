@@ -1,8 +1,9 @@
 import { TProject } from "@/types/project.types";
-import { faCircleInfo, faEye } from "@fortawesome/free-solid-svg-icons";
+import {  faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Carousel } from "antd";
+import { Button, Carousel } from "antd";
 import './Project.css';
+import { GithubOutlined, InfoCircleOutlined } from "@ant-design/icons";
 
 const Project = (project: TProject) => {
 
@@ -19,7 +20,7 @@ const Project = (project: TProject) => {
 
     return (
         <div className="projectDiv">
-            <Carousel effect="fade" >
+            <Carousel effect="fade" autoplay>
                 {
                     image?.map((imgSrc, index) => (
                         <div key={index} style={{}}>
@@ -43,20 +44,14 @@ const Project = (project: TProject) => {
                 <p>{title}</p>
                 <div style={{ fontSize: '13px', paddingLeft: '20px', flexGrow: 1 }} dangerouslySetInnerHTML={{ __html: features }} />
                 <small style={{ display: 'flex', justifyContent: 'end', marginTop: "10px" }}>
-                    <a href={`/projects/${_id}`} target="_blank">
-                        <button style={{ background: "#014688ff", border: '1px solid #666666ff', color: 'white', borderRadius: '50px', padding: '5px 15px', }}>
-                            <FontAwesomeIcon icon={faCircleInfo} /> Details
-                        </button>
+                    <a href={`/project/${_id}`} target="_blank">
+                        <Button style={{ padding: '10px 12px 13px 12px', color: 'white', background: "#014688ff", marginRight: '8px' }} size="small" icon={<InfoCircleOutlined />}>Details</Button>
                     </a>
                     <a href={client_side_code} target="_blank" rel="noreferrer">
-                        <button style={{ background: "#014688ff", border: '1px solid #666666ff', color: 'white', borderRadius: '50px', padding: '5px 15px', marginLeft: '8px' }}>
-                            <i className="fab fa-github"></i> Client
-                        </button>
+                        <Button style={{ padding: '10px 12px 13px 12px', color: 'white', background: "#014688ff", marginRight: '8px' }} size="small" icon={<GithubOutlined />}>Client</Button>
                     </a>
                     <a href={server_side_code} target="_blank" rel="noreferrer">
-                        <button style={{ background: "#014688ff", border: '1px solid #666666ff', color: 'white', borderRadius: '50px', padding: '5px 15px', marginLeft: '8px' }}>
-                            <i className="fab fa-github"></i> Server
-                        </button>
+                        <Button style={{ padding: '10px 12px 13px 12px', color: 'white', background: "#014688ff", }} size="small" icon={<GithubOutlined />}>Client</Button>
                     </a>
                 </small>
             </div>
