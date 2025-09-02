@@ -4,7 +4,7 @@ import CommonLayout from "@/layout/CommonLayout";
 import AllBlogs from "@/Pages/AllBlogs/AllBlogs";
 import AllProjects from "@/Pages/AllProjects/AllProjects";
 import Admin from "@/Pages/Admin/Admin/Admin";
-import CreateBlog from "@/Pages/Admin/CreateBlog/CreateBlog";
+// import CreateBlog from "@/Pages/Admin/CreateBlog/CreateBlog";
 import Login from "@/Pages/Admin/Login/Login";
 import CreateProject from "@/Pages/Admin/Projects/createProject/CreateProject";
 import DnDUpdateProject from "@/Pages/Admin/Projects/DnDUpdateProject/DnDUpdateProject";
@@ -17,7 +17,9 @@ import Home from "@/Pages/Home/Home";
 import ProjectDetails from "@/Pages/ProjectDetails/ProjectDetails";
 import { RouteType } from "@/types/routes.types";
 import BlogDetails from "@/Pages/BlogDetails/BlogDetails";
-
+import BlogList from "@/Pages/Admin/blogs/blogList/BlogList";
+import CreateBlog from "@/Pages/Admin/blogs/createBlog/CreateBlog";
+import UpdateBlog from "@/Pages/Admin/blogs/updateBlog/UpdateBlog";
 
 
 const routes: RouteType[] = [
@@ -51,7 +53,10 @@ const routes: RouteType[] = [
       { path: "skill-list", element: <ListSkills /> },
       { path: "create-skill", element: <CreateSkills /> },
       { path: "dnd-update-skill", element: <DndUpdateSkill /> },
-      { path: "create-blog", element: <CreateBlog /> },
+      // //////////////// Blogs //////////////////////////////
+      { path: "blog-list", element: <BlogList /> },
+      { path: "blog-create", element: <CreateBlog /> },
+      { path: "blog-update/:blogId", element: <UpdateBlog /> },
     ]
   }
 ];

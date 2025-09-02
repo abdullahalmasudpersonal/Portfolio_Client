@@ -1,7 +1,8 @@
-import Loader from "@/pages/shared/loader/Loader";
-import PageTitle from "@/pages/shared/PageTitle/PageTitle";
-import { useDeleteBlogMutation, useGetBlogsQuery } from "@/redux/features/blog/BlogApi";
-import { TBlog } from "@/types/blog.types";
+
+// import PageTitle from "@/pages/shared/PageTitle/PageTitle";
+// import { useDeleteBlogMutation, useGetBlogsQuery } from "@/redux/features/blog/BlogApi";
+import Loader from "@/Pages/Shared/loader/Loader";
+import { TBlog } from "@/types/blogs.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, Col, ConfigProvider, Popconfirm, Row, Select, Table, TableColumnsType } from "antd";
 import { useState } from "react";
@@ -14,7 +15,7 @@ const BlogList = () => {
     const [pageSize, setPageSize] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate();
-    const [deleteBlog] = useDeleteBlogMutation();
+    // const [deleteBlog] = useDeleteBlogMutation();
     const { data: blogsData, isLoading: blogDataLoading } = useGetBlogsQuery({});
 
     const handleDeleteBlog = async (blogId: string) => {
@@ -40,11 +41,12 @@ const BlogList = () => {
     };
 
     const dataTable = blogsData?.data?.map(
-        ({ _id, title, image, writer, description }: TBlog) => ({
+        ({ _id, name, title, image, date, description }: TBlog) => ({
             key: _id,
+            name,
             title,
             image,
-            writer,
+            date,
             description,
         })
     );
@@ -137,7 +139,7 @@ const BlogList = () => {
 
     return (
         <div>
-            <PageTitle pageTitle="Blog List || Admin" />
+            {/* <PageTitle pageTitle="Blog List || Admin" /> */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
                 <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>
                     All Blog List ({blogsData?.data?.length})
