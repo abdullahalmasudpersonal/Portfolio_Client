@@ -1,15 +1,16 @@
-import { useGetSingleBlogQuery } from "@/redux/features/blogs/blogsApi";
 import { CalendarOutlined } from "@ant-design/icons";
 import { Avatar, Col, Image, Row, Typography } from "antd";
 import { useParams } from "react-router-dom";
 import Loader2 from "../Shared/loader/Loader2";
-// import { useState } from "react";
+import { useGetSingleBlogQuery } from "@/redux/features/blog/BlogApi";
+import { formatDate } from "@/Utils/formatDate";
+import wirterImg from '@/Assets/img/Profile/abdullah_al_masud_img.jpg';
 
 
 const BlogDetails = () => {
     const { id: blogId } = useParams();
     const { data: blogDetails,isLoading } = useGetSingleBlogQuery(blogId);
-    const { name, image, date, title, description } = blogDetails?.data || {};
+    const { name, image, createdAt, title, description } = blogDetails?.data || {};
     // const [isLoading, setIsLoading] = useState(true);
 
     return (
@@ -24,16 +25,16 @@ const BlogDetails = () => {
                             <Col lg={18} style={{ margin: 'auto' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: "20px", padding: '50px 0 15px 0' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: "8px" }}>
-                                        <Avatar src={"https://i.ibb.co/ZgGpTRh/tailwindcss.png"} />
+                                        <Avatar src={wirterImg || 'Writer Image'} />
                                         <Typography style={{ color: 'white', fontWeight: 'bold' }}>Abdullah Al Masud</Typography>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: "8px" }}>
                                         <CalendarOutlined style={{ fontSize: '18px' }} />
-                                        <Typography style={{ color: 'white', fontWeight: 'bold' }}>{date}</Typography>
+                                        <Typography style={{ color: 'white', fontWeight: 'bold' }}>{formatDate(createdAt)}</Typography>
                                     </div>
                                 </div>
                                 <Typography style={{ color: 'white', fontWeight: '800', maxWidth: '900px', fontSize: 'clamp(18px, 4vw, 25px)', paddingBottom: '20px', lineHeight: '32px' }}>{title}</Typography>
-                                <div>{description}</div>
+                                <div className="react-quill-container" dangerouslySetInnerHTML={{ __html: description }} />
                             </Col>
                         </Row></>
                 }

@@ -1,8 +1,7 @@
-
-// import PageTitle from "@/pages/shared/PageTitle/PageTitle";
-// import { useDeleteBlogMutation, useGetBlogsQuery } from "@/redux/features/blog/BlogApi";
 import Loader from "@/Pages/Shared/loader/Loader";
-import { TBlog } from "@/types/blogs.types";
+import { useDeleteBlogMutation, useGetBlogsQuery } from "@/redux/features/blog/BlogApi";
+import { TBlog } from "@/types/blog.types";
+import { formatDate } from "@/Utils/formatDate";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, Col, ConfigProvider, Popconfirm, Row, Select, Table, TableColumnsType } from "antd";
 import { useState } from "react";
@@ -15,7 +14,7 @@ const BlogList = () => {
     const [pageSize, setPageSize] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate();
-    // const [deleteBlog] = useDeleteBlogMutation();
+    const [deleteBlog] = useDeleteBlogMutation();
     const { data: blogsData, isLoading: blogDataLoading } = useGetBlogsQuery({});
 
     const handleDeleteBlog = async (blogId: string) => {
@@ -32,7 +31,7 @@ const BlogList = () => {
     };
 
     const navigateToEditBlog = (id: string) => {
-        navigate(`/admin/update-blog/${id}`);
+        navigate(`/admin/blog-update/${id}`);
     };
 
     const handleTableChange = (page: number, pageSize: number) => {
@@ -41,21 +40,21 @@ const BlogList = () => {
     };
 
     const dataTable = blogsData?.data?.map(
-        ({ _id, name, title, image, date, description }: TBlog) => ({
+        ({ _id, name, title, image, createdAt, description }: TBlog) => ({
             key: _id,
             name,
             title,
             image,
-            date,
+            createdAt,
             description,
         })
     );
 
     const columns: TableColumnsType<TBlog> = [
         {
-            title: "Blog Title",
-            key: "title",
-            width: 300,
+            title: "Name",
+            key: "name",
+            width: 200,
             render: (item) => (
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <img
@@ -72,31 +71,28 @@ const BlogList = () => {
                         style={{ textDecoration: "none", color: "black" }}
                         to={`/blog/${item.key}`}
                     >
-                        <span>{item.title}</span>
+                        <span>{item.name}</span>
                     </Link>
                 </div>
             ),
         },
         {
-            title: "Writer",
-            dataIndex: "writer",
-            key: "writer",
+            title: "Title",
+            dataIndex: "title",
+            key: "title",
             align: "center",
-            width: 200,
         },
         {
-            title: "Description",
-            dataIndex: "description",
-            key: "description",
+            title: "Date",
+            dataIndex: 'createdAt',
+            key: "title",
             align: "center",
-            width: 400,
-            render: (text) => (text.length > 100 ? `${text.slice(0, 100)}...` : text),
+            render: (createdAt) => (formatDate(createdAt))
         },
         {
             title: "Action",
             key: "category",
             align: "center",
-            width: 80,
             render: (blog) => {
                 return (
                     <div

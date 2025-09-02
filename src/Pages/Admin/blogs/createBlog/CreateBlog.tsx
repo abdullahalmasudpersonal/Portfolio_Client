@@ -1,13 +1,14 @@
 import { useState } from "react";
-import PageTitle from "../../../shared/PageTitle/PageTitle";
 import { Form, Input, Button, Row, Col, Upload, UploadFile, Image } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import imageCompression from "browser-image-compression";
-import { TBlog } from "../../../../types/blog.types";
 import { toast } from "sonner";
 import { useCreateBlogMutation } from "../../../../redux/features/blog/BlogApi";
-import { resizeImage } from "../../../../utils/resizeResolution";
+// import { resizeImage } from "../../../../utils/resizeResolution";
 import { useNavigate } from "react-router-dom";
+import { resizeImage } from "@/Utils/resizeResolution";
+import { TBlog } from "@/types/blog.types";
+import ReactQuill from "react-quill";
 
 const CreateBlog = () => {
   const [form] = Form.useForm();
@@ -61,11 +62,9 @@ const CreateBlog = () => {
 
   const onFinish = async (values: TBlog) => {
     const blogData = {
+      name:values?.name,
       title: values?.title,
       description: values?.description,
-      description2: values?.description2,
-      features: values?.features,
-      features2: values?.features2,
     };
 
     const formData = new FormData();
@@ -78,7 +77,7 @@ const CreateBlog = () => {
       toast.success(res?.message, { position: "top-right" });
       form.resetFields();
       setFileList([]);
-      navigate(`/admin/list-blogs`);
+      navigate(`/admin/blog-list`);
     } else {
       toast.error(res?.message, { position: "top-right" });
       console.log(res.message);
@@ -87,7 +86,7 @@ const CreateBlog = () => {
 
   return (
     <div>
-      <PageTitle pageTitle="Create Blog || Admin" />
+      {/* <PageTitle pageTitle="Create Blog || Admin" /> */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
         <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Create Blog</h5>
       </div>
@@ -101,6 +100,15 @@ const CreateBlog = () => {
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24}>
               <Form.Item className="my-label"
+                label="Name"
+                name="name"
+                rules={[{ required: true, message: "Please enter the name" }]}
+              >
+                <Input placeholder="Enter name" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24}>
+              <Form.Item className="my-label"
                 label="Title"
                 name="title"
                 rules={[{ required: true, message: "Please enter the title" }]}
@@ -108,108 +116,79 @@ const CreateBlog = () => {
                 <Input placeholder="Enter title" />
               </Form.Item>
             </Col>
-
-            {/* Description */}
-            <Col xs={24} sm={24}>
+            <Col xs={24} sm={24} md={24}>
               <Form.Item className="my-label"
                 label="Description"
                 name="description"
-                rules={[
-                  { required: true, message: "Please enter the description" },
-                ]}
+                rules={[{ required: true, message: "Please enter the description" }]}
               >
-                <Input.TextArea placeholder="Enter description" rows={4} />
+                <ReactQuill style={{color:'white',}} placeholder="Write your description"  />
               </Form.Item>
             </Col>
-
-            {/* Description2 (Array of Strings) */}
-            <Col xs={24} sm={24}>
-              <Form.Item className="my-label" label="Description2 (Optional)" name="description2">
-                <Input.TextArea
-                  placeholder="Enter multiple descriptions separated by commas"
-                  rows={4}
-                />
-              </Form.Item>
-            </Col>
-
-            {/* Features */}
-            <Col xs={24} sm={24}>
-              <Form.Item className="my-label" label="Features (Optional)" name="features">
-                <Input.TextArea placeholder="Enter features" rows={4} />
-              </Form.Item>
-            </Col>
-
-            {/* Features2 (Array of Strings) */}
-            <Col xs={24} sm={24}>
-              <Form.Item className="my-label" label="Features2 (Optional)" name="features2">
-                <Input.TextArea
-                  placeholder="Enter multiple features separated by commas"
-                  rows={4}
-                />
-              </Form.Item>
-            </Col>
-
-            <div
-              style={{
-                height: "230px",
-                // width: "250px",
-                margin: "auto",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: "30px",
-              }}
-            >
+            <Col xs={24}>
               <div
                 style={{
-                  height: "160px",
-                  width: "180px",
-                  boxShadow:
-                    "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-                  borderRadius: "2px",
+                  height: "230px",
+                  // width: "250px",
+                  margin: "auto",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "30px",
                 }}
               >
-                {fileList.length > 0 && (
-                  <Image
-                    width={180}
-                    height={160}
-                    src={fileList[0].url}
-                    style={{ borderRadius: "2px" }}
-                  />
-                )}
-              </div>
-
-              <Upload
-                accept="image/*"
-                fileList={fileList}
-                onChange={handleChange}
-                beforeUpload={() => false}
-                showUploadList={false}
-                multiple={false}
-              >
-                <Button
-                  type="primary"
-                  icon={<UploadOutlined />}
+                <div
                   style={{
-                    backgroundColor: "#004196ff",
-                    marginLeft: "28px",
+                    height: "160px",
+                    width: "180px",
+                    boxShadow:
+                      "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                    borderRadius: "2px",
                   }}
                 >
-                  Blog Image
+                  {fileList.length > 0 && (
+                    <Image
+                      width={180}
+                      height={160}
+                      src={fileList[0].url}
+                      style={{ borderRadius: "2px" }}
+                    />
+                  )}
+                </div>
+
+                <Upload
+                  accept="image/*"
+                  fileList={fileList}
+                  onChange={handleChange}
+                  beforeUpload={() => false}
+                  showUploadList={false}
+                  multiple={false}
+                >
+                  <Button
+                    type="primary"
+                    icon={<UploadOutlined />}
+                    style={{
+                      backgroundColor: "#004196ff",
+                      marginLeft: "28px",
+                    }}
+                  >
+                    Blog Image
+                  </Button>
+                </Upload>
+              </div>
+            </Col>
+            <Col xs={24}>
+              <Form.Item style={{ textAlign: "center" }}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{ backgroundColor: "#004196ff", padding: "10px 50px" }}
+                >
+                  Create Blog
                 </Button>
-              </Upload>
-            </div>
+              </Form.Item>
+            </Col>
           </Row>
-          <hr />
-          <Form.Item style={{ textAlign: "center" }}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              style={{ backgroundColor: "#004196ff", padding: "10px 50px" }}
-            >
-              Create Blog
-            </Button>
-          </Form.Item>
         </Form>
       </div>
     </div>

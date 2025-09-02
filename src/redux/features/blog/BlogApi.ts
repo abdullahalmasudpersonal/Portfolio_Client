@@ -20,22 +20,30 @@ const blogApi = baseApi.injectEndpoints({
     }),
     getSingleBlog: builder.query({
       query: (blogId) => ({
-        url: `/blog/${blogId}`,
+        url: `/blog/single-blog/${blogId}`,
         method: "GET",
       }),
       providesTags: [tagTypes.blog],
     }),
     updateBlog: builder.mutation({
       query: ({ formData: updateData, _id }) => ({
-        url: `/blog/${_id}`,
+        url: `/blog/update-blog/${_id}`,
         method: "PATCH",
         body: updateData,
       }),
       invalidatesTags: [tagTypes.blog],
     }),
+    updateBlogSerialNumber: builder.mutation({
+      query: (blogs) => ({
+        url: "blog/update-blog-serial-number",
+        method: "PATCH",
+        body: blogs,
+      }),
+      invalidatesTags: [tagTypes.blog],
+    }),
     deleteBlog: builder.mutation({
       query: (blogId) => ({
-        url: `/blog/${blogId}`,
+        url: `/blog/delete-blog/${blogId}`,
         method: "DELETE",
       }),
       invalidatesTags: [tagTypes.blog],
@@ -48,5 +56,6 @@ export const {
   useGetBlogsQuery,
   useGetSingleBlogQuery,
   useUpdateBlogMutation,
+  useUpdateBlogSerialNumberMutation,
   useDeleteBlogMutation,
 } = blogApi;

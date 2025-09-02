@@ -1,3 +1,5 @@
+import './AdminGlobal.css'
+
 const Admin = () => {
   return (
     <div className="">

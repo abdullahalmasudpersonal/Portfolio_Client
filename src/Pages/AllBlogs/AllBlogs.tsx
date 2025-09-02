@@ -1,7 +1,7 @@
 import Blog from "@/components/ui/blogs/Blog";
-import { useGetBlogsQuery } from "../../redux/features/blogs/blogsApi";
-import { TBlog } from "../../types/blogs.types";
 import { Col, Row } from "antd";
+import { useGetBlogsQuery } from "@/redux/features/blog/BlogApi";
+import { TBlog } from "@/types/blog.types";
 
 const AllBlogs = () => {
   const { data: blogs } = useGetBlogsQuery({});

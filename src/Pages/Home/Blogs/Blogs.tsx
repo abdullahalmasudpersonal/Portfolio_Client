@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button, Col, Row } from "antd";
 import Blog from "@/components/ui/blogs/Blog";
-import { useGetBlogsQuery } from "@/redux/features/blogs/blogsApi";
-import { TBlog } from "@/types/blogs.types";
+import { TBlog } from "@/types/blog.types";
+import { useGetBlogsQuery } from "@/redux/features/blog/BlogApi";
 
 const Blogs = () => {
   const { data: blogs } = useGetBlogsQuery({});

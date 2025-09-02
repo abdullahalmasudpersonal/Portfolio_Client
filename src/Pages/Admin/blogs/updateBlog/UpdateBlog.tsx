@@ -1,16 +1,13 @@
 import { Form, Input, Button, Row, Col, Image, Upload, UploadFile } from "antd";
-import PageTitle from "../../../shared/PageTitle/PageTitle";
-import { TBlog } from "../../../../types/blog.types";
 import { UploadOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import {
-  useGetSingleBlogQuery,
-  useUpdateBlogMutation,
-} from "../../../../redux/features/blog/BlogApi";
 import { useNavigate, useParams } from "react-router-dom";
 import imageCompression from "browser-image-compression";
-import { resizeImage } from "../../../../utils/resizeResolution";
 import { toast } from "sonner";
+import { resizeImage } from "@/Utils/resizeResolution";
+import { TBlog } from "@/types/blog.types";
+import ReactQuill from "react-quill";
+import { useGetSingleBlogQuery, useUpdateBlogMutation } from "@/redux/features/blog/BlogApi";
 
 const UpdateBlog = () => {
   const { blogId } = useParams();
@@ -19,17 +16,15 @@ const UpdateBlog = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [updateBlog] = useUpdateBlogMutation();
   const { data: blogData } = useGetSingleBlogQuery(blogId);
-  const { _id, title, description, description2, features, features2, image } =
+  const { _id,name, title, description, image } =
     blogData?.data || {};
 
   //// set default values
   useEffect(() => {
     form.setFieldsValue({
+      name:name,
       title: title,
       description: description,
-      description2: description2,
-      features: features,
-      features2: features2,
     });
   });
 
@@ -39,7 +34,7 @@ const UpdateBlog = () => {
     fileList: UploadFile[];
   }) => {
     if (newFileList.length > 0) {
-      const file = newFileList[newFileList.length - 1]; // শুধুমাত্র প্রথম ইমেজ নিন
+      const file = newFileList[newFileList.length - 1];
       if (file.originFileObj) {
         try {
           // Compress the file
@@ -79,11 +74,9 @@ const UpdateBlog = () => {
 
   const onFinish = async (values: TBlog) => {
     const blogData = {
+      name:values?.name,
       title: values?.title,
       description: values?.description,
-      description2: values?.description2,
-      features: values?.features,
-      features2: values?.features2,
     };
 
     const formData = new FormData();
@@ -96,7 +89,7 @@ const UpdateBlog = () => {
       toast.success(res?.message, { position: "top-right" });
       form.resetFields();
       setFileList([]);
-      navigate(`/admin/list-blogs`);
+      navigate(`/admin/blog-list`);
     } else {
       toast.error(res?.message, { position: "top-right" });
       console.log(res.message);
@@ -104,23 +97,30 @@ const UpdateBlog = () => {
   };
 
   return (
-    <div className="dashboard-dev2">
-      <PageTitle pageTitle="Update Blog || Admin" />
-      <div className="pt-4 px-4">
-        <h5 className="fw-bold ">Update Blog</h5>
+    <div>
+      {/* <PageTitle pageTitle="Update Blog || Admin" /> */}
+      <div style={{ padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
+        <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Update Blog</h5>
       </div>
-      <hr />
-      <div>
+      <div style={{ paddingTop: "20px" }}>
         <Form
           form={form}
           layout="vertical"
           onFinish={onFinish}
-          style={{ maxWidth: "980px", margin: "0 auto" }}
+          style={{ maxWidth: "980px", margin: "0 auto", backgroundColor: '#4187ceff', padding: '20px', borderRadius: '5px' }}
         >
           <Row gutter={16}>
-            {/* Title */}
             <Col xs={24} sm={24} md={24}>
-              <Form.Item
+              <Form.Item className="my-label"
+                label="Name"
+                name="name"
+                rules={[{ required: true, message: "Please enter the name" }]}
+              >
+                <Input placeholder="Enter name" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24}>
+              <Form.Item className="my-label"
                 label="Title"
                 name="title"
                 rules={[{ required: true, message: "Please enter the title" }]}
@@ -128,106 +128,86 @@ const UpdateBlog = () => {
                 <Input placeholder="Enter title" />
               </Form.Item>
             </Col>
-
-            {/* Description */}
             <Col xs={24} sm={24}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Description"
                 name="description"
                 rules={[
                   { required: true, message: "Please enter the description" },
                 ]}
               >
-                <Input.TextArea placeholder="Enter description" rows={4} />
+                <ReactQuill style={{color:'white'}} placeholder="Write your description"   />
               </Form.Item>
             </Col>
-
-            {/* Description2 (Array of Strings) */}
-            <Col xs={24} sm={24}>
-              <Form.Item label="Description2 (Optional)" name="description2">
-                <Input.TextArea
-                  placeholder="Enter multiple descriptions separated by commas"
-                  rows={4}
-                />
-              </Form.Item>
-            </Col>
-
-            {/* Features */}
-            <Col xs={24} sm={24}>
-              <Form.Item label="Features (Optional)" name="features">
-                <Input.TextArea placeholder="Enter features" rows={4} />
-              </Form.Item>
-            </Col>
-
-            {/* Features2 (Array of Strings) */}
-            <Col xs={24} sm={24}>
-              <Form.Item label="Features2 (Optional)" name="features2">
-                <Input.TextArea
-                  placeholder="Enter multiple features separated by commas"
-                  rows={4}
-                />
-              </Form.Item>
-            </Col>
-
-            <div
-              style={{
-                height: "230px",
-                width: "250px",
-                margin: "auto",
-                display: "grid",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: "30px",
-              }}
-            >
+            <Col xs={24}>
               <div
                 style={{
-                  height: "160px",
-                  width: "180px",
-                  boxShadow:
-                    "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-                  borderRadius: "2px",
+                  height: "230px",
+                  width: "250px",
+                  margin: "auto",
+                  display: "grid",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "30px",
                 }}
               >
-                <Image
-                  width={180}
-                  height={160}
-                  src={fileList.length > 0 ? fileList[0].url : image}
-                  style={{ borderRadius: "2px" }}
-                />
-              </div>
-
-              <Upload
-                accept="image/*"
-                fileList={fileList}
-                onChange={handleChange}
-                beforeUpload={() => false}
-                showUploadList={false}
-                multiple={false}
-              >
-                <Button
-                  type="primary"
-                  icon={<UploadOutlined />}
+                <div
                   style={{
-                    backgroundColor: "orange",
-                    marginLeft: "27px",
+                    height: "160px",
+                    width: "180px",
+                    boxShadow:
+                      "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                    borderRadius: "2px",
                   }}
                 >
-                  Blog Image
+                  <Image
+                    width={180}
+                    height={160}
+                    src={fileList.length > 0 ? fileList[0].url : image}
+                    style={{ borderRadius: "2px" }}
+                  />
+                </div>
+
+                <Upload
+                  accept="image/*"
+                  fileList={fileList}
+                  onChange={handleChange}
+                  beforeUpload={() => false}
+                  showUploadList={false}
+                  multiple={false}
+                >
+                  <Button
+                    type="primary"
+                    icon={<UploadOutlined />}
+                    style={{
+                      backgroundColor: "#003e70ff",
+                      color: "#ffffff",
+                      transition: "all 0.3s ease",
+                      marginLeft: "27px",
+                    }}
+                  >
+                    Blog Image
+                  </Button>
+                </Upload>
+              </div>
+            </Col>
+
+            <Col xs={24}>
+              <Form.Item style={{ textAlign: "center" }}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{
+                    backgroundColor: "#003e70ff",
+                    color: "#ffffff",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  Update Blog
                 </Button>
-              </Upload>
-            </div>
+              </Form.Item>
+            </Col>
           </Row>
-          <hr />
-          <Form.Item style={{ textAlign: "center" }}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              style={{ backgroundColor: "orange", padding: "10px 50px" }}
-            >
-              Update Blog
-            </Button>
-          </Form.Item>
         </Form>
       </div>
     </div>

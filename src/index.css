@@ -50,3 +50,9 @@
    left: calc(50% - 17.5px);
 }
 /* ------------------globalSectionHeadline----------------------- */
+
+/* react quill padding left for ul */
+.react-quill-container ul {
+  padding-left: 25px;
+  margin: 0;        
+}

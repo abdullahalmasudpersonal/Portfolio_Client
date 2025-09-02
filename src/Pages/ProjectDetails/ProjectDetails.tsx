@@ -128,7 +128,7 @@ const ProjectDetails = () => {
               </div>
               <div style={{ marginTop: "20px" }} className="features-container">
                 <h5>Features</h5>
-                <p dangerouslySetInnerHTML={{ __html: features2 }} />
+                <p  className="features-container" dangerouslySetInnerHTML={{ __html: features2 }} />
               </div>
               <div style={{ marginTop: "20px" }}>
                 <h5>Description</h5>
