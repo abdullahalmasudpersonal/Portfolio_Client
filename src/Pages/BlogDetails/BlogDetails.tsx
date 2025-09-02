@@ -3,18 +3,20 @@ import { CalendarOutlined } from "@ant-design/icons";
 import { Avatar, Col, Image, Row, Typography } from "antd";
 import { useParams } from "react-router-dom";
 import Loader2 from "../Shared/loader/Loader2";
+// import { useState } from "react";
 
 
 const BlogDetails = () => {
     const { id: blogId } = useParams();
-    const { data: blogDetails, isLoading } = useGetSingleBlogQuery(blogId);
+    const { data: blogDetails,isLoading } = useGetSingleBlogQuery(blogId);
     const { name, image, date, title, description } = blogDetails?.data || {};
+    // const [isLoading, setIsLoading] = useState(true);
 
     return (
         <div style={{ background: "linear-gradient(to right, #001233, #032057, #002363, #001131)", minHeight: 'calc(100vh - 202px)', paddingTop: '120px', paddingBottom: "50px", color: 'white' }}>
             <div className="customContainer">
                 {
-                    isLoading ? <><Loader2 /></> : <> <Typography style={{ textAlign: 'center', color: 'white', fontSize: 'clamp(32px, 9vw, 60px)', fontWeight: '700' }}>{name}</Typography>
+                    isLoading ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 'calc(100vh - 372px)', }}><Loader2 /></div> : <> <Typography style={{ textAlign: 'center', color: 'white', fontSize: 'clamp(32px, 9vw, 60px)', fontWeight: '700' }}>{name}</Typography>
                         <Row>
                             <Col xs={24} lg={24} style={{ margin: 'auto' }}>
                                 <Image width={'100%'} preview={false} src={image} alt="blog Image" style={{ paddingTop: '50px', maxHeight: '500px' }} />
