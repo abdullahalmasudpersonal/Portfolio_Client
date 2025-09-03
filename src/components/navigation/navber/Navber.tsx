@@ -20,6 +20,16 @@ const Navber = () => {
         { key: "blogs", label: "Blogs", href: '/#blogs' },
         { key: "contact", label: "Contact", href: '/#connect-us' },
     ];
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const handleMenuClick = (e:any) => {
+        const clickedItem = menuItems.find((item) => item.key === e.key);
+        if (clickedItem) {
+            window.location.href = clickedItem.href; // ✅ সরাসরি URL এ যাবে
+        }
+        setOpen(false); // Drawer বন্ধ করবে
+    };
+
     return (
         <Header style={{ background: "transparent", padding: 0, position: "fixed", top: '20px', zIndex: 100, left: 0, right: 0, }}>
             <div className="antNavber">
@@ -39,13 +49,20 @@ const Navber = () => {
                             icon={<MenuOutlined />}
                             onClick={() => setOpen(true)}
                         />
-                        <Drawer
-                            title="Menu"
+
+                        <Drawer style={{ background: "#001529", color: 'white' }}
+                            title="Portfolio"
                             placement="right"
                             onClose={() => setOpen(false)}
                             open={open}
                         >
-                            <Menu mode="vertical" items={menuItems} onClick={() => setOpen(false)} />
+                            <Menu theme="dark" mode="vertical"
+                                items={menuItems.map((item) => ({
+                                    key: item.key,
+                                    label: item.label,
+                                }))}
+                                onClick={handleMenuClick}
+                            />
                         </Drawer>
                     </>
                 )}
@@ -55,6 +72,4 @@ const Navber = () => {
 };
 
 export default Navber;
-{/* 
-                            <Menu style={{ backgroundColor: '#00000001' }} mode="horizontal" items={menuItems} selectable={false}  className="customMenu" />
-                            */}
+
