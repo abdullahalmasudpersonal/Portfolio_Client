@@ -23,7 +23,7 @@ import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { resizeImage } from "../../../../Utils/resizeResolution";
 import imageCompression from "browser-image-compression";
 
-const UpdateProject = () => {
+const ProjectUpdate = () => {
   const { projectId } = useParams();
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
@@ -352,4 +352,4 @@ const UpdateProject = () => {
   );
 };
 
-export default UpdateProject;
+export default ProjectUpdate;

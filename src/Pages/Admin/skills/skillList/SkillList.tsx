@@ -7,7 +7,7 @@ import { TSkill } from "../../../../types/skill.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { toast } from "sonner";
 
-const ListSkills = () => {
+const SkillList = () => {
   const { data: skilldata } = useGetSkillsQuery({});
   const [deleteSkill] = useDeleteSkillMutation({});
 
@@ -104,4 +104,4 @@ const ListSkills = () => {
   );
 };
 
-export default ListSkills;
+export default SkillList;

@@ -1,20 +1,39 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Form, Input, Button, Row, Col, Upload, UploadFile, Image } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import imageCompression from "browser-image-compression";
 import { toast } from "sonner";
 import { useCreateBlogMutation } from "../../../../redux/features/blog/BlogApi";
-// import { resizeImage } from "../../../../utils/resizeResolution";
 import { useNavigate } from "react-router-dom";
 import { resizeImage } from "@/Utils/resizeResolution";
 import { TBlog } from "@/types/blog.types";
 import ReactQuill from "react-quill";
+import { DeltaStatic } from "quill";
 
-const CreateBlog = () => {
+const BlogCreate = () => {
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [createBlog] = useCreateBlogMutation();
   const navigate = useNavigate();
+  const quillRef = useRef<ReactQuill | null>(null);
+
+  useEffect(() => {
+    if (quillRef.current) {
+      const editor = quillRef.current.getEditor();
+
+      // Properly typed matcher
+      editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node: Node, delta: DeltaStatic) => {
+        delta.ops?.forEach((op) => {
+          if (op.attributes) {
+            delete op.attributes.background;
+            delete op.attributes.color;
+            delete op.attributes.font;
+          }
+        });
+        return delta;
+      });
+    }
+  }, []);
 
   const handleChange = async ({
     fileList: newFileList,
@@ -42,7 +61,7 @@ const CreateBlog = () => {
           });
 
           // Resize the compressed file
-          const resizedFile = await resizeImage(compressedFile, 1350, 1000);
+          const resizedFile = await resizeImage(compressedFile, 1350, 450);
 
           // Update fileList with only one processed file
           setFileList([
@@ -62,8 +81,9 @@ const CreateBlog = () => {
 
   const onFinish = async (values: TBlog) => {
     const blogData = {
-      name:values?.name,
+      name: values?.name,
       title: values?.title,
+      card_description: values?.card_description,
       description: values?.description,
     };
 
@@ -118,44 +138,41 @@ const CreateBlog = () => {
             </Col>
             <Col xs={24} sm={24} md={24}>
               <Form.Item className="my-label"
+                label="Card Description"
+                name="card_description"
+                rules={[{ required: true, message: "Please enter the card_description" }]}
+              >
+                <ReactQuill ref={quillRef} style={{ background: 'white' }} placeholder="Write your card_description" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24}>
+              <Form.Item className="my-label"
                 label="Description"
                 name="description"
                 rules={[{ required: true, message: "Please enter the description" }]}
               >
-                <ReactQuill style={{color:'white',}} placeholder="Write your description"  />
+                <ReactQuill ref={quillRef} style={{ background: 'white' }} placeholder="Write your description" />
               </Form.Item>
             </Col>
-            <Col xs={24}>
+            <Col xs={24} >
               <div
                 style={{
-                  height: "230px",
-                  // width: "250px",
-                  margin: "auto",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "30px",
+                  width: '300px', height: '100px',
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                  borderRadius: "2px",
                 }}
               >
-                <div
-                  style={{
-                    height: "160px",
-                    width: "180px",
-                    boxShadow:
-                      "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-                    borderRadius: "2px",
-                  }}
-                >
-                  {fileList.length > 0 && (
-                    <Image
-                      width={180}
-                      height={160}
-                      src={fileList[0].url}
-                      style={{ borderRadius: "2px" }}
-                    />
-                  )}
-                </div>
-
+                {fileList.length > 0 && (
+                  <Image
+                    width={300}
+                    height={100}
+                    src={fileList[0].url}
+                    style={{ borderRadius: "2px" }}
+                  />
+                )}
+              </div>
+              <div style={{ width: '300px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Upload
                   accept="image/*"
                   fileList={fileList}
@@ -168,8 +185,9 @@ const CreateBlog = () => {
                     type="primary"
                     icon={<UploadOutlined />}
                     style={{
-                      backgroundColor: "#004196ff",
-                      marginLeft: "28px",
+                      backgroundColor: "#003e70ff",
+                      color: "#ffffff",
+                      transition: "all 0.3s ease",
                     }}
                   >
                     Blog Image
@@ -195,4 +213,4 @@ const CreateBlog = () => {
   );
 };
 
-export default CreateBlog;
+export default BlogCreate;

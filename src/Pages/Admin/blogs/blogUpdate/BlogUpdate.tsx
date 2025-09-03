@@ -1,6 +1,6 @@
 import { Form, Input, Button, Row, Col, Image, Upload, UploadFile } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import imageCompression from "browser-image-compression";
 import { toast } from "sonner";
@@ -8,22 +8,43 @@ import { resizeImage } from "@/Utils/resizeResolution";
 import { TBlog } from "@/types/blog.types";
 import ReactQuill from "react-quill";
 import { useGetSingleBlogQuery, useUpdateBlogMutation } from "@/redux/features/blog/BlogApi";
+import { DeltaStatic } from "quill";
 
-const UpdateBlog = () => {
+const BlogUpdate = () => {
   const { blogId } = useParams();
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const quillRef = useRef<ReactQuill | null>(null);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [updateBlog] = useUpdateBlogMutation();
   const { data: blogData } = useGetSingleBlogQuery(blogId);
-  const { _id,name, title, description, image } =
+  const { _id, name, title, card_description, description, image } =
     blogData?.data || {};
+
+  useEffect(() => {
+    if (quillRef.current) {
+      const editor = quillRef.current.getEditor();
+
+      // Properly typed matcher
+      editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node: Node, delta: DeltaStatic) => {
+        delta.ops?.forEach((op) => {
+          if (op.attributes) {
+            delete op.attributes.background;
+            delete op.attributes.color;
+            delete op.attributes.font;
+          }
+        });
+        return delta;
+      });
+    }
+  }, []);
 
   //// set default values
   useEffect(() => {
     form.setFieldsValue({
-      name:name,
+      name: name,
       title: title,
+      card_description: card_description,
       description: description,
     });
   });
@@ -54,7 +75,7 @@ const UpdateBlog = () => {
           });
 
           // Resize the compressed file
-          const resizedFile = await resizeImage(compressedFile, 1350, 1000);
+          const resizedFile = await resizeImage(compressedFile, 1350, 540);
 
           // Update fileList with only one processed file
           setFileList([
@@ -74,8 +95,9 @@ const UpdateBlog = () => {
 
   const onFinish = async (values: TBlog) => {
     const blogData = {
-      name:values?.name,
+      name: values?.name,
       title: values?.title,
+      card_description: values?.card_description,
       description: values?.description,
     };
 
@@ -130,44 +152,43 @@ const UpdateBlog = () => {
             </Col>
             <Col xs={24} sm={24}>
               <Form.Item className="my-label"
+                label="Card Description"
+                name="card_description"
+                rules={[
+                  { required: true, message: "Please enter the card_description" },
+                ]}
+              >
+                <ReactQuill ref={quillRef} style={{ background: 'white' }} placeholder="Write your card_description" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24}>
+              <Form.Item className="my-label"
                 label="Description"
                 name="description"
                 rules={[
                   { required: true, message: "Please enter the description" },
                 ]}
               >
-                <ReactQuill style={{color:'white'}} placeholder="Write your description"   />
+                <ReactQuill ref={quillRef} style={{ background: 'white' }} placeholder="Write your description" />
               </Form.Item>
             </Col>
-            <Col xs={24}>
+            <Col xs={24} >
               <div
                 style={{
-                  height: "230px",
-                  width: "250px",
-                  margin: "auto",
-                  display: "grid",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "30px",
+                  width: '300px', height: '100px',
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                  borderRadius: "2px", 
                 }}
               >
-                <div
-                  style={{
-                    height: "160px",
-                    width: "180px",
-                    boxShadow:
-                      "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-                    borderRadius: "2px",
-                  }}
-                >
-                  <Image
-                    width={180}
-                    height={160}
-                    src={fileList.length > 0 ? fileList[0].url : image}
-                    style={{ borderRadius: "2px" }}
-                  />
-                </div>
-
+                <Image
+                  width={300}
+                  height={100}
+                  src={fileList.length > 0 ? fileList[0].url : image}
+                  style={{ borderRadius: "2px" }}
+                />
+              </div>
+              <div style={{ width: '300px', height: '100px', display:'flex', justifyContent:'center', alignItems:'center' }}>
                 <Upload
                   accept="image/*"
                   fileList={fileList}
@@ -183,7 +204,6 @@ const UpdateBlog = () => {
                       backgroundColor: "#003e70ff",
                       color: "#ffffff",
                       transition: "all 0.3s ease",
-                      marginLeft: "27px",
                     }}
                   >
                     Blog Image
@@ -214,4 +234,4 @@ const UpdateBlog = () => {
   );
 };
 
-export default UpdateBlog;
+export default BlogUpdate;

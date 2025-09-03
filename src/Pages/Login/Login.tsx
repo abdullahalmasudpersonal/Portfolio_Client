@@ -6,10 +6,10 @@ import { Button, Checkbox, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { toast } from "sonner";
-import { useLoginMutation } from "../../../redux/features/auth/authApi";
-import { verifyToken } from "../../../Utils/verifyToken";
-import { setUser } from "../../../redux/features/auth/authSlice";
-import { useAppDispatch } from "../../../redux/hooks";
+import { useLoginMutation } from "../../redux/features/auth/authApi";
+import { verifyToken } from "../../Utils/verifyToken";
+import { setUser } from "../../redux/features/auth/authSlice";
+import { useAppDispatch } from "../../redux/hooks";
 
 const Login = () => {
   const navigate = useNavigate();

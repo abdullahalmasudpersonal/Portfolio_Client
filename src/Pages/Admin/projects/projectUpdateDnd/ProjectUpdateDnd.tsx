@@ -19,7 +19,7 @@ import {
 } from "../../../../redux/features/project/projectApi";
 import { TProject } from "../../../../types/project.types";
 
-const DnDUpdateProject = () => {
+const ProjectUpdateDnd = () => {
   const { data, isLoading } = useGetAllProjectQuery({});
   const [updateProjectSerialNumber] = useUpdateProjectSerialNumberMutation();
   const projectData = data?.data;
@@ -105,4 +105,4 @@ const DnDUpdateProject = () => {
   );
 };
 
-export default DnDUpdateProject;
+export default ProjectUpdateDnd;

@@ -1,30 +1,31 @@
-import { useGetAllProjectQuery } from "../../../../redux/features/project/projectApi";
-import { Button, Popconfirm, Table, TableColumnsType } from "antd";
+// import { useGetAllProjectQuery } from "../../../../redux/features/project/projectApi";
+import { Button, Col, ConfigProvider, Popconfirm, Row, Select, Table, TableColumnsType } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { TProject } from "../../../../types/project.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { formatDate } from "../../../../Utils/formatDate";
 import Loader2 from "../../../Shared/loader/Loader2";
+import { useState } from "react";
+import { useGetAllProjectQuery } from "@/redux/features/project/projectApi";
 
-const ListProject = () => {
+const { Option } = Select;
+
+const ProjectList = () => {
+  const [pageSize, setPageSize] = useState(10);
+  const [currentPage, /* setCurrentPage */] = useState(1);
   const navigate = useNavigate();
-  const { data: projectData, isLoading } = useGetAllProjectQuery({});
+  const { data: projectData, isLoading: projectIsLoading } = useGetAllProjectQuery({});
 
   const navigateToUpdateProject = (id: string) => {
-    navigate(`/admin/update-project/${id}`);
+    navigate(`/admin/project-update/${id}`);
   };
 
   const dataTable = projectData?.data?.map(
     ({
       _id,
       name,
-      title,
       image,
       live_link,
-      description,
-      description2,
-      features,
-      features2,
       serialNumber,
       client_side_code,
       server_side_code,
@@ -32,13 +33,8 @@ const ListProject = () => {
     }: TProject) => ({
       key: _id,
       name,
-      title,
       image,
       live_link,
-      description,
-      description2,
-      features,
-      features2,
       serialNumber,
       client_side_code,
       server_side_code,
@@ -50,7 +46,6 @@ const ListProject = () => {
     {
       title: "Product Name",
       key: "name",
-      width: 200,
       render: (item) => (
         <div style={{ display: "flex", alignItems: "center" }}>
           <img
@@ -65,7 +60,7 @@ const ListProject = () => {
           />
           <Link
             style={{ textDecoration: "none", color: "black" }}
-            to={`/categore/product/${item.key}`}
+            to={`/project/${item.key}`}
           >
             <span>{item.name}</span>
           </Link>
@@ -73,17 +68,9 @@ const ListProject = () => {
       ),
     },
     {
-      title: "Title",
-      dataIndex: "title",
-      key: "title",
-      align: "center",
-      width: 300,
-    },
-    {
       title: "Live Link",
       key: "live_link",
       align: "center",
-      width: 150,
       render: (item) => (
         <Link to={item?.live_link} target="_blank">
           <Button>Live</Button>
@@ -94,7 +81,6 @@ const ListProject = () => {
       title: "Client Code",
       key: "client_side_code",
       align: "center",
-      width: 150,
       render: (item) => (
         <Link to={item?.client_side_code} target="_blank">
           <Button>Client Code</Button>
@@ -105,7 +91,6 @@ const ListProject = () => {
       title: "Server Code",
       key: "server_side_code",
       align: "center",
-      width: 150,
       render: (item) => (
         <Link to={item?.server_side_code} target="_blank">
           <Button>Server Code</Button>
@@ -117,15 +102,14 @@ const ListProject = () => {
       dataIndex: "createdAt",
       key: "date",
       align: "center",
-      width: 150,
       render: (createdAt: string) => formatDate(createdAt),
     },
     {
-      title: "serialNumber",
+      title: "serial Number",
       dataIndex: "serialNumber",
       key: "serialNumber",
       align: "center",
-      width: 130,
+      width:150
     },
     {
       title: "Action",
@@ -136,7 +120,7 @@ const ListProject = () => {
           <div
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            <Link to={`/categore/product/${item.key}`}>
+            <Link to={`/project/${item.key}`}>
               <Button color="primary" variant="filled">
                 <EyeOutlined />
               </Button>
@@ -154,7 +138,7 @@ const ListProject = () => {
 
             <Popconfirm
               title="Are you sure you want to delete this product?"
-                // onConfirm={() => deleteProduct(item?.key)}
+              // onConfirm={() => deleteProduct(item?.key)}
               okText="Yes"
               cancelText="No"
             >
@@ -170,31 +154,43 @@ const ListProject = () => {
 
   return (
     <div>
-      {isLoading ? (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "90vh",
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
+        <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>
+          All Blog List ({projectData?.data?.length})
+        </h5>
+        <Row>
+          <Col>
+            <Select
+              defaultValue={10}
+              style={{ width: 120 }}
+              onChange={(value) => setPageSize(value)}
+            >
+              <Option value={10}>10 / page</Option>
+              <Option value={20}>20 / page</Option>
+              <Option value={30}>30 / page</Option>
+              <Option value={50}>50 / page</Option>
+            </Select>
+          </Col>
+        </Row>
+      </div>
+      {
+        projectIsLoading ? <Loader2 /> : <div style={{ paddingTop: '20px', }}> <ConfigProvider theme={{ components: { Table: { headerBorderRadius: 0, } } }}>
+          <Table columns={columns} dataSource={dataTable} pagination={{
+            pageSize: pageSize,
+            current: currentPage,
+            // total: blogsData?.meta?.total,
+            // onChange: handleTableChange,
+            showSizeChanger: false,
           }}
-        >
-          <Loader2 />
-        </div>
-      ) : (
-        <div style={{ padding: "10px" }}>
-          <Table
-            columns={columns}
-            dataSource={dataTable}
-            pagination={false}
-            scroll={{ x: true, y: 500 }}
+            scroll={{ x: "max-content", y: 570 }}
             style={{ width: "100%" }}
-            sticky
-          />
+            sticky />
+        </ConfigProvider>
         </div>
-      )}
+      }
+
     </div>
   );
 };
 
-export default ListProject;
+export default ProjectList;

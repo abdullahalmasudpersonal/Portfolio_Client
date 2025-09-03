@@ -8,7 +8,7 @@ import imageCompression from "browser-image-compression";
 import { resizeImage } from "../../../../Utils/resizeResolution";
 import { TSkill } from "../../../../types/skill.types";
 
-const CreateSkills = () => {
+const CreateSkill = () => {
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [createSkill] = useCreateSkillMutation();
@@ -181,4 +181,4 @@ const CreateSkills = () => {
   );
 };
 
-export default CreateSkills;
+export default CreateSkill;

@@ -56,3 +56,7 @@
   padding-left: 25px;
   margin: 0;        
 }
+.react-quill-container p {
+  margin: 0;   
+  text-align: justify;     
+}

@@ -18,7 +18,7 @@ import { useCreateProjectMutation } from "../../../../redux/features/project/pro
 import { toast } from "sonner";
 import { FieldValues } from "react-hook-form";
 
-const CreateProject = () => {
+const ProjectCreate = () => {
   const [form] = Form.useForm();
   const [createProject] = useCreateProjectMutation();
   /////////////////// images upload /////////////
@@ -281,6 +281,5 @@ const CreateProject = () => {
     </div>
   );
 };
-// backEndTechnology;
 
-export default CreateProject;
+export default ProjectCreate;
