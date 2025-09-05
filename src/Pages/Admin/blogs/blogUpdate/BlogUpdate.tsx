@@ -26,7 +26,7 @@ const BlogUpdate = () => {
       const editor = quillRef.current.getEditor();
 
       // Properly typed matcher
-      editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node: Node, delta: DeltaStatic) => {
+      editor.clipboard.addMatcher(Node.ELEMENT_NODE, (_node: Node, delta: DeltaStatic) => {
         delta.ops?.forEach((op) => {
           if (op.attributes) {
             delete op.attributes.background;

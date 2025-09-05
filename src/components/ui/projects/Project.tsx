@@ -45,13 +45,13 @@ const Project = (project: TProject) => {
                 <div style={{ fontSize: '13px', paddingLeft: '20px', flexGrow: 1 }} dangerouslySetInnerHTML={{ __html: features }} />
                 <small style={{ display: 'flex', justifyContent: 'end', marginTop: "10px" }}>
                     <a href={`/project/${_id}`} target="_blank">
-                        <Button style={{ padding: '10px 12px 13px 12px', color: 'white', background: "#014688ff", marginRight: '8px' }} size="small" icon={<InfoCircleOutlined />}>Details</Button>
+                        <Button style={{ paddingBottom:'2px', color: 'white', background: "#014688ff", marginRight: '8px' }} size="small" icon={<InfoCircleOutlined />}>Details</Button>
                     </a>
                     <a href={client_side_code} target="_blank" rel="noreferrer">
-                        <Button style={{ padding: '10px 12px 13px 12px', color: 'white', background: "#014688ff", marginRight: '8px' }} size="small" icon={<GithubOutlined />}>Client</Button>
+                        <Button style={{ paddingBottom:'2px', color: 'white', background: "#014688ff", marginRight: '8px' }} size="small" icon={<GithubOutlined />}>Client</Button>
                     </a>
                     <a href={server_side_code} target="_blank" rel="noreferrer">
-                        <Button style={{ padding: '10px 12px 13px 12px', color: 'white', background: "#014688ff", }} size="small" icon={<GithubOutlined />}>Client</Button>
+                        <Button style={{ paddingBottom:'2px', color: 'white', background: "#014688ff", }} size="small" icon={<GithubOutlined />}>Client</Button>
                     </a>
                 </small>
             </div>
