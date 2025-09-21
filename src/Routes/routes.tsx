@@ -12,13 +12,14 @@ import { RouteType } from "@/types/routes.types";
 import BlogDetails from "@/Pages/BlogDetails/BlogDetails";
 import BlogList from "@/Pages/Admin/blogs/blogList/BlogList";
 import SkillList from "@/Pages/Admin/skills/skillList/SkillList";
-import CreateSkill from "@/Pages/Admin/skills/skillCreate/SkillCreate";
 import BlogCreate from "@/Pages/Admin/blogs/blogCreate/BlogCreate";
 import BlogUpdate from "@/Pages/Admin/blogs/blogUpdate/BlogUpdate";
 import ProjectList from "@/Pages/Admin/projects/projectList/ProjectList";
 import ProjectCreate from "@/Pages/Admin/projects/projectCreate/ProjectCreate";
 import ProjectUpdate from "@/Pages/Admin/projects/projectUpdate/ProjectUpdate";
 import ProjectUpdateDnd from "@/Pages/Admin/projects/projectUpdateDnd/ProjectUpdateDnd";
+import SkillCreate from "@/Pages/Admin/skills/skillCreate/SkillCreate";
+import SkillUpdate from "@/Pages/Admin/skills/skillUpdate/SkillUpdate";
 
 
 const routes: RouteType[] = [
@@ -52,7 +53,8 @@ const routes: RouteType[] = [
       { path: "project-update-dnd", element: <ProjectUpdateDnd /> },
       /////////////////// Skill /////////////////////////
       { path: "skill-list", element: <SkillList /> },
-      { path: "skill-create", element: <CreateSkill /> },
+      { path: "skill-create", element: <SkillCreate /> },
+      { path: "skill-update/:skillId", element: <SkillUpdate /> },
       { path: "skill-update-dnd", element: <DndUpdateSkill /> },
       // //////////////// Blogs /////////////////////////
       { path: "blog-list", element: <BlogList /> },

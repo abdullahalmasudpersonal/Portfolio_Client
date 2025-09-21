@@ -13,10 +13,24 @@ const SkillApis = baseApi.injectEndpoints({
     }),
     getSkills: builder.query({
       query: () => ({
-        url: "/skills",
+        url: "/skills/all-skill",
         method: "GET",
       }),
       providesTags: [tagTypes.skill],
+    }),
+    getSingleSkill: builder.query({
+      query: (id) => ({
+        url: `/skills/single-skill/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.skill],
+    }),
+    updateSkill: builder.mutation({
+      query: ({id,data }) => ({
+        url: `/skills/update-skill/${id}`,
+        method: "PATCH",
+        body: data ,
+      }),
     }),
     deleteSkill: builder.mutation({
       query: (skillId) => ({
@@ -39,6 +53,8 @@ const SkillApis = baseApi.injectEndpoints({
 export const {
   useCreateSkillMutation,
   useGetSkillsQuery,
+  useGetSingleSkillQuery,
+  useUpdateSkillMutation,
   useDeleteSkillMutation,
   useUpdateSkillSerialNumberMutation,
 } = SkillApis;

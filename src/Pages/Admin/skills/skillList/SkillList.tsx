@@ -6,8 +6,10 @@ import {
 import { TSkill } from "../../../../types/skill.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const SkillList = () => {
+  const navigate = useNavigate();
   const { data: skilldata } = useGetSkillsQuery({});
   const [deleteSkill] = useDeleteSkillMutation({});
 
@@ -64,7 +66,7 @@ const SkillList = () => {
             </Button>
             {/* </Link> */}
             <Button
-              // onClick={() => navigateToUpdateProduct(item?.key)}
+              onClick={() => navigate(`/admin/skill-update/${item.key}`)}
               variant="filled"
               style={{
                 backgroundColor: "#FFF8DC",
