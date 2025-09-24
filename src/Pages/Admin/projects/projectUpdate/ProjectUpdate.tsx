@@ -326,7 +326,7 @@ const ProjectUpdate = () => {
           <Col xs={24}>
             <Form.Item>
               <Button
-                disabled={loading === true}
+                disabled={loading}
                 type="primary"
                 htmlType="submit"
                 style={{

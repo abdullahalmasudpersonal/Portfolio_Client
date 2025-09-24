@@ -13,6 +13,7 @@ const SkillCreate = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [createSkill] = useCreateSkillMutation();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleChange = async ({
     fileList: newFileList,
@@ -59,26 +60,36 @@ const SkillCreate = () => {
   };
 
   const onFinish = async (values: TSkill) => {
-    const skillData = {
-      title: values?.title,
-    };
+    setLoading(true);
 
-    const formData = new FormData();
-    formData.append("data", JSON.stringify(skillData));
-    formData.append("imageCategory", "skills");
-    fileList.forEach((file) => {
-      formData.append("file", file.originFileObj as File);
-    });
-    const res = await createSkill(formData).unwrap();
-    if (res?.success === true) {
-      toast.success(res?.message, { position: "top-right" });
-      form.resetFields();
-      setFileList([]);
-      navigate(`/admin/skill-list`);
-    } else {
-      toast.error(res?.message, { position: "top-right" });
-      console.log(res.message);
+    try {
+      const skillData = {
+        title: values?.title,
+      };
+
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(skillData));
+      formData.append("imageCategory", "skills");
+      fileList.forEach((file) => {
+        formData.append("file", file.originFileObj as File);
+      });
+      const res = await createSkill(formData).unwrap();
+      if (res?.success === true) {
+        toast.success(res?.message, { position: "top-right" });
+        form.resetFields();
+        setFileList([]);
+        navigate(`/admin/skill-list`);
+      } else {
+        toast.error(res?.message, { position: "top-right" });
+        console.log(res.message);
+      }
+
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
+
   };
 
   return (
@@ -167,12 +178,12 @@ const SkillCreate = () => {
             </div>
           </Row>
           <Form.Item style={{ textAlign: "center" }}>
-            <Button
+            <Button disabled={loading}
               type="primary"
               htmlType="submit"
               style={{ backgroundColor: "orange", padding: "10px 50px" }}
             >
-              Create Skill
+              {loading ? 'Skill Creating...' : ' Create Skill'}
             </Button>
           </Form.Item>
         </Form>

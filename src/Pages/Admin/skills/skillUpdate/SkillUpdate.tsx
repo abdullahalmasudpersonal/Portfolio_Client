@@ -12,7 +12,7 @@ const SkillUpdate = () => {
     const [form] = Form.useForm();
     const { skillId } = useParams<{ skillId: string }>();
     const [loading, setLoading] = useState(false);
-    const { data: singleSkill, isLoading } = useGetSingleSkillQuery(skillId);
+    const { data: singleSkill, } = useGetSingleSkillQuery(skillId);
     const [updateSkill] = useUpdateSkillMutation();
     const [imageFile, setImageFile] = useState<UploadFile[]>([]);
     const navigate = useNavigate();
@@ -136,7 +136,7 @@ const SkillUpdate = () => {
                     <Col xs={24}>
                         <Form.Item>
                             <Button
-                                disabled={loading || isLoading}
+                                disabled={loading}
                                 type="primary"
                                 htmlType="submit"
                                 style={{

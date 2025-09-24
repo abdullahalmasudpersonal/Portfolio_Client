@@ -14,6 +14,7 @@ const BlogUpdate = () => {
   const { blogId } = useParams();
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const quillRef = useRef<ReactQuill | null>(null);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [updateBlog] = useUpdateBlogMutation();
@@ -94,27 +95,37 @@ const BlogUpdate = () => {
   };
 
   const onFinish = async (values: TBlog) => {
-    const blogData = {
-      name: values?.name,
-      title: values?.title,
-      card_description: values?.card_description,
-      description: values?.description,
-    };
+    setLoading(true);
 
-    const formData = new FormData();
-    formData.append("data", JSON.stringify(blogData));
-    fileList.forEach((file) => {
-      formData.append("file", file.originFileObj as File);
-    });
-    const res = await updateBlog({ formData, _id }).unwrap();
-    if (res?.success === true) {
-      toast.success(res?.message, { position: "top-right" });
-      form.resetFields();
-      setFileList([]);
-      navigate(`/admin/blog-list`);
-    } else {
-      toast.error(res?.message, { position: "top-right" });
-      console.log(res.message);
+    try {
+      const blogData = {
+        name: values?.name,
+        title: values?.title,
+        card_description: values?.card_description,
+        description: values?.description,
+      };
+
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(blogData));
+      fileList.forEach((file) => {
+        formData.append("file", file.originFileObj as File);
+      });
+
+      const res = await updateBlog({ formData, _id }).unwrap();
+      if (res?.success === true) {
+        toast.success(res?.message, { position: "top-right" });
+        form.resetFields();
+        setFileList([]);
+        navigate(`/admin/blog-list`);
+      } else {
+        toast.error(res?.message, { position: "top-right" });
+        console.log(res.message);
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.error(error, { position: "top-right" });
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -178,7 +189,7 @@ const BlogUpdate = () => {
                   width: '300px', height: '100px',
                   boxShadow:
                     "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-                  borderRadius: "2px", 
+                  borderRadius: "2px",
                 }}
               >
                 <Image
@@ -188,7 +199,7 @@ const BlogUpdate = () => {
                   style={{ borderRadius: "2px" }}
                 />
               </div>
-              <div style={{ width: '300px', height: '100px', display:'flex', justifyContent:'center', alignItems:'center' }}>
+              <div style={{ width: '300px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Upload
                   accept="image/*"
                   fileList={fileList}
@@ -214,7 +225,7 @@ const BlogUpdate = () => {
 
             <Col xs={24}>
               <Form.Item style={{ textAlign: "center" }}>
-                <Button
+                <Button disabled={loading}
                   type="primary"
                   htmlType="submit"
                   style={{
@@ -223,7 +234,7 @@ const BlogUpdate = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Update Blog
+                  {loading ? 'Updating...' : "Update Blog"}
                 </Button>
               </Form.Item>
             </Col>

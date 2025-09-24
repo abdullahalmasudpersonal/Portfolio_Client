@@ -20,6 +20,7 @@ import { FieldValues } from "react-hook-form";
 
 const ProjectCreate = () => {
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
   const [createProject] = useCreateProjectMutation();
   /////////////////// images upload /////////////
   const [fileList, setFileList] = useState<UploadFile[]>([]);
@@ -59,7 +60,7 @@ const ProjectCreate = () => {
               type: file.type,
               lastModified: file.originFileObj.lastModified,
             });
-            // console.log(compressedFile, "compressedfile");
+            
             // Resize the compressed file to 1000 x 1000 pixels
             const resizedFile = await resizeImage(compressedFile, 1500, 900);
             // console.log(resizedFile, "resizefiles");
@@ -89,59 +90,42 @@ const ProjectCreate = () => {
 
   /////////////// handle update prodcut //////////////////
   const handleSubmit = async (data: FieldValues) => {
-    Modal.confirm({
-      title: "Are you sure you want to create project !",
-      okText: "Yes",
-      cancelText: "No",
-      onOk: async () => {
-        try {
-          const projectData = {
-            name: data?.name,
-            title: data?.title,
-            live_link: data?.live_link,
-            client_side_code: data?.client_side_code,
-            server_side_code: data?.server_side_code,
-            features: data?.features,
-            features2: data?.features2,
-            description: data?.description,
-            description2: data?.description2,
-            frontEndTechnology: data?.frontEndTechnology,
-            backEndTechnology: data?.backEndTechnology,
-          };
+    setLoading(true);
 
-          const formData = new FormData();
-          formData.append("data", JSON.stringify(projectData));
-          formData.append("imageCategory", "projects");
-          fileList.forEach((file) => {
-            formData.append("files", file.originFileObj as File);
-          });
+    try {
+      const projectData = {
+        name: data?.name,
+        title: data?.title,
+        live_link: data?.live_link,
+        client_side_code: data?.client_side_code,
+        server_side_code: data?.server_side_code,
+        features: data?.features,
+        features2: data?.features2,
+        description: data?.description,
+        description2: data?.description2,
+        frontEndTechnology: data?.frontEndTechnology,
+        backEndTechnology: data?.backEndTechnology,
+      };
 
-          const res = await createProject(formData).unwrap();
-          if (res?.success === true) {
-            toast.success(res?.message, { position: "top-right" });
-            form.resetFields();
-            setFileList([]);
-          }
-        } catch (error) {
-          if (error && typeof error === "object" && "data" in error) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const errorData = (error as any).data;
-            if (
-              errorData &&
-              typeof errorData === "object" &&
-              "message" in errorData
-            ) {
-              toast.error(errorData.message, { position: "top-right" });
-              form.resetFields();
-              setFileList([]);
-              console.log(errorData.message);
-            }
-          } else {
-            console.log("An unknown error occurred");
-          }
-        }
-      },
-    });
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(projectData));
+      fileList.forEach((file) => {
+        formData.append("files", file.originFileObj as File);
+      });
+      const res = await createProject(formData).unwrap();
+      if (res?.success === true) {
+        toast.success(res?.message, { position: "top-right" });
+        form.resetFields();
+        setFileList([]);
+      }else{
+         toast.error('Something went worning !!!', { position: "top-right" });
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.error(error, { position: "top-right" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -262,7 +246,7 @@ const ProjectCreate = () => {
           </Col>
           <Col xs={24}>
             <Form.Item>
-              <Button
+              <Button disabled={loading}
                 type="primary"
                 htmlType="submit"
                 style={{
@@ -272,7 +256,7 @@ const ProjectCreate = () => {
                   transition: "all 0.3s ease",
                 }}
               >
-                Save Product
+                {loading ? 'Creating...' : 'Create Project'}
               </Button>
             </Form.Item>
           </Col>

@@ -13,6 +13,7 @@ import { DeltaStatic } from "quill";
 const BlogCreate = () => {
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState<UploadFile[]>([]);
+  const [loading, setLoading] = useState(false);
   const [createBlog] = useCreateBlogMutation();
   const navigate = useNavigate();
   const quillRef = useRef<ReactQuill | null>(null);
@@ -80,28 +81,38 @@ const BlogCreate = () => {
   };
 
   const onFinish = async (values: TBlog) => {
-    const blogData = {
-      name: values?.name,
-      title: values?.title,
-      card_description: values?.card_description,
-      description: values?.description,
-    };
+    setLoading(true);
 
-    const formData = new FormData();
-    formData.append("data", JSON.stringify(blogData));
-    fileList.forEach((file) => {
-      formData.append("file", file.originFileObj as File);
-    });
-    const res = await createBlog(formData).unwrap();
-    if (res?.success === true) {
-      toast.success(res?.message, { position: "top-right" });
-      form.resetFields();
-      setFileList([]);
-      navigate(`/admin/blog-list`);
-    } else {
-      toast.error(res?.message, { position: "top-right" });
-      console.log(res.message);
+    try {
+      const blogData = {
+        name: values?.name,
+        title: values?.title,
+        card_description: values?.card_description,
+        description: values?.description,
+      };
+
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(blogData));
+      fileList.forEach((file) => {
+        formData.append("file", file.originFileObj as File);
+      });
+      const res = await createBlog(formData).unwrap();
+      if (res?.success === true) {
+        toast.success(res?.message, { position: "top-right" });
+        form.resetFields();
+        setFileList([]);
+        navigate(`/admin/blog-list`);
+      } else {
+        toast.error(res?.message, { position: "top-right" });
+        console.log(res.message);
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.error(error, { position: "top-right" });
+    } finally {
+      setLoading(false);
     }
+
   };
 
   return (
@@ -197,12 +208,12 @@ const BlogCreate = () => {
             </Col>
             <Col xs={24}>
               <Form.Item style={{ textAlign: "center" }}>
-                <Button
+                <Button disabled={loading}
                   type="primary"
                   htmlType="submit"
                   style={{ backgroundColor: "#004196ff", padding: "10px 50px" }}
                 >
-                  Create Blog
+                  {loading ? "Blog creating..." : "Create Blog"}
                 </Button>
               </Form.Item>
             </Col>
