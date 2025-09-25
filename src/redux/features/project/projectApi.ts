@@ -41,6 +41,15 @@ const projectApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.project],
     }),
+    deleteProject: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/projects/delete-project/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: [tagTypes.project],
+    }),
   }),
 });
 
@@ -50,4 +59,5 @@ export const {
   useGetSingleProjectQuery,
   useUpdateProjectMutation,
   useUpdateProjectSerialNumberMutation,
+  useDeleteProjectMutation,
 } = projectApi;

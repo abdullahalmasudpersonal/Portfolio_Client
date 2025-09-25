@@ -6,7 +6,7 @@ import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { formatDate } from "../../../../Utils/formatDate";
 import Loader2 from "../../../Shared/loader/Loader2";
 import { useState } from "react";
-import { useGetAllProjectQuery } from "@/redux/features/project/projectApi";
+import { useDeleteProjectMutation, useGetAllProjectQuery } from "@/redux/features/project/projectApi";
 
 const { Option } = Select;
 
@@ -15,10 +15,7 @@ const ProjectList = () => {
   const [currentPage, /* setCurrentPage */] = useState(1);
   const navigate = useNavigate();
   const { data: projectData, isLoading: projectIsLoading } = useGetAllProjectQuery({});
-
-  const navigateToUpdateProject = (id: string) => {
-    navigate(`/admin/project-update/${id}`);
-  };
+  const [deleteProject] = useDeleteProjectMutation();
 
   const dataTable = projectData?.data?.map(
     ({
@@ -44,7 +41,7 @@ const ProjectList = () => {
 
   const columns: TableColumnsType<TProject> = [
     {
-      title: "Product Name",
+      title: "Project Name",
       key: "name",
       render: (item) => (
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -105,11 +102,11 @@ const ProjectList = () => {
       render: (createdAt: string) => formatDate(createdAt),
     },
     {
-      title: "serial Number",
+      title: "SL",
       dataIndex: "serialNumber",
       key: "serialNumber",
       align: "center",
-      width:150
+      width: 150
     },
     {
       title: "Action",
@@ -120,13 +117,11 @@ const ProjectList = () => {
           <div
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            <Link to={`/project/${item.key}`}>
-              <Button color="primary" variant="filled">
-                <EyeOutlined />
-              </Button>
-            </Link>
+            <Button onClick={() => item?.key && navigate(`/project/${item.key}`)} color="primary" variant="filled">
+              <EyeOutlined />
+            </Button>
             <Button
-              onClick={() => navigateToUpdateProject(item?.key)}
+              onClick={() => item?.key && navigate(`/admin/project-update/${item.key}`)}
               variant="filled"
               style={{
                 backgroundColor: "#FFF8DC",
@@ -138,7 +133,7 @@ const ProjectList = () => {
 
             <Popconfirm
               title="Are you sure you want to delete this product?"
-              // onConfirm={() => deleteProduct(item?.key)}
+              onConfirm={() => deleteProject(item?.key)}
               okText="Yes"
               cancelText="No"
             >
@@ -156,7 +151,7 @@ const ProjectList = () => {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
         <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>
-          All Blog List ({projectData?.data?.length})
+          All Project List ({projectData?.data?.length})
         </h5>
         <Row>
           <Col>

@@ -198,8 +198,8 @@ const ProjectUpdate = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <Typography>Update Project</Typography>
-      <Form form={form} layout="vertical" onFinish={handleSubmit}>
+      <Typography style={{color:'white',fontSize:'20px', fontWeight:'bold', background:'#0855b9ff', padding:'10px', borderRadius:'4px 4px 1px 1px', marginBottom:'10px' }}>Update Project</Typography>
+      <Form form={form} layout="vertical" onFinish={handleSubmit} style={{background:'#0d4586ff', padding:'10px', borderRadius:'1px'}}>
         <Row gutter={16}>
           <Col xs={24} md={12}>
             <Form.Item label="Name" name="name" rules={[{ required: true }]}>
@@ -342,7 +342,7 @@ const ProjectUpdate = () => {
                     size="small"
                   ></Spin>
                 )}
-                Save Product
+                Update Project
               </Button>
             </Form.Item>
           </Col>
