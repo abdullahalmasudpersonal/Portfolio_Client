@@ -15,7 +15,7 @@ const Footer = () => {
                     <section className="mb-4">
                         <a
                             className="btn btn-outline-light btn-floating m-1"
-                            href="https://www.linkedin.com/in/abdullah-al-masud-48ab691b1"
+                            href="https://www.linkedin.com/in/abdullahalmasud772"
                             role="button"
                             target="_blank"
                             rel="noreferrer"
@@ -25,7 +25,7 @@ const Footer = () => {
 
                         <a
                             className="btn btn-outline-light btn-floating m-1"
-                            href="https://github.com/abdullahalmasudpersonal"
+                            href="https://github.com/abdullahalmasud772"
                             role="button"
                             target="_blank"
                             rel="noreferrer"
@@ -45,7 +45,7 @@ const Footer = () => {
 
                         <a
                             className="btn btn-outline-light btn-floating m-1 facebook-padding"
-                            href="https://www.facebook.com/abdullahal.masud.5891"
+                            href="https://www.facebook.com/abdullahalmasud772"
                             role="button"
                             target="_blank"
                             rel="noreferrer"
@@ -73,7 +73,7 @@ const Footer = () => {
                             <i className="fab fa-instagram"></i>
                         </a>
 
-                        <a
+                        {/* <a
                             className="btn btn-outline-light btn-floating m-1"
                             href="https://dribbble.com/Abdullah540"
                             role="button"
@@ -81,9 +81,9 @@ const Footer = () => {
                             rel="noreferrer"
                         >
                             <i className="fab fa-dribbble"></i>
-                        </a>
+                        </a> */}
 
-                        <a
+                        {/* <a
                             className="btn btn-outline-light btn-floating m-1"
                             href="#!"
                             role="button"
@@ -91,7 +91,7 @@ const Footer = () => {
                             rel="noreferrer"
                         >
                             <i className="fab fa-pinterest"></i>
-                        </a>
+                        </a> */}
                     </section>
                 </div>
                 <div className="text-center pb-3 footer-bottom-bg">
