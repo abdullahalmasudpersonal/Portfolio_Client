@@ -83,7 +83,7 @@ const ContactForm = () => {
         <Button
           htmlType="submit"
           shape="round"
-          size="large"
+          size="large" disabled={loading}
           loading={loading} style={{background:'#014688ff', color:'white', padding:'5px 20px 8px 20px'}}
         >
           Send Message
