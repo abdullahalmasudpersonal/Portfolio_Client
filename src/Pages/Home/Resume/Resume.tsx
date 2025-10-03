@@ -5,8 +5,8 @@ const Resume = () => {
 
   return (
     <div id="resume" className="customContainer" style={{ color: 'white', padding: '60px 0' }}>
-      <h3 data-aos="flip-up" className="globalSectionHeadline" style={{marginBottom:'70px'}}>RESUME</h3>
-      <Row gutter={[16, 16]} style={{padding:"0 10px"}}>
+      <h3 data-aos="flip-up" className="globalSectionHeadline" style={{ marginBottom: '70px' }}>RESUME</h3>
+      <Row gutter={[16, 16]} style={{ padding: "0 10px" }}>
         <Col md={24} lg={12}>
           <div data-aos="zoom-in-right">
             <h3 className="mb-4">Summary</h3>
@@ -14,10 +14,7 @@ const Resume = () => {
               <h5 className="text-uppercase">Abdullah Al Masud</h5>
               <p>
                 <em>
-                  To be an expect employee and intend to work in a challenging
-                  and competitive Environment in an organizational position
-                  entrusted with higher responsibility and strategies decision
-                  making authority, motivated self-driven creative.
+                  Aspiring Full Stack Developer seeking an opportunity in a growth-oriented organization to apply expertise in front-end and back-end web development. Passionate about building scalable, user-friendly applications, eager to learn modern technologies, and contribute to the organization’s success.
                 </em>
               </p>
               <ul>
@@ -37,10 +34,7 @@ const Resume = () => {
                 <em>Islamic Arabic University, Mohammadpur, Dhaka</em>{" "}
               </p>
               <p>
-                To be an expect employee and intend to work in a challenging
-                and competitive Environment in an organizational position
-                entrusted with higher responsibility and strategies decision
-                making authority, motivated self-driven creative.
+                Al Quran & Islamic Studies is an academic program focused on in-depth understanding of the Quran, Hadith, and Islamic jurisprudence (Fiqh). The curriculum emphasizes proficiency in the Arabic language to comprehend classical texts, alongside studies in Islamic history, ethics, and contemporary issues. It develops analytical thinking, research skills, and a strong foundation in Islamic teachings, fostering both knowledge and moral values.
               </p>
             </div>
             <div data-aos="zoom-in-right" className="resume-item">
@@ -53,10 +47,7 @@ const Resume = () => {
               </p>
               <p>
                 <em>
-                  To be an expect employee and intend to work in a challenging
-                  and competitive Environment in an organizational position
-                  entrusted with higher responsibility and strategies decision
-                  making authority, motivated self-driven creative.
+                  Completed the Higher Secondary School Certificate (Madrasah), gaining a comprehensive foundation in both general education and Islamic studies. The program emphasized academic excellence, critical thinking, and knowledge in subjects such as mathematics, science, languages, and religious studies, preparing for higher education and professional development.
                 </em>
               </p>
             </div>
@@ -73,10 +64,7 @@ const Resume = () => {
               </em>{" "}
             </p>
             <p>
-              To be an expect employee and intend to work in a challenging
-              and competitive Environment in an organizational position
-              entrusted with higher responsibility and strategies decision
-              making authority, motivated self-driven creative.
+              Completed the Next Level Web Development course, focusing on advanced web development concepts including modern JavaScript, React.js, Next.js, Node.js, and database integration. Gained practical experience in building responsive, high-performance web applications, implementing front-end and back-end functionality, and deploying projects efficiently. Enhanced problem-solving skills and understanding of scalable, production-ready web development practices.
             </p>
           </div>
           <div data-aos="zoom-in-right" className="resume-item">
@@ -90,10 +78,7 @@ const Resume = () => {
               </em>{" "}
             </p>
             <p>
-              To be an expect employee and intend to work in a challenging
-              and competitive Environment in an organizational position
-              entrusted with higher responsibility and strategies decision
-              making authority, motivated self-driven creative.
+              Completed the Complete Web Development Course by Jhankar Mahbub, covering full-stack web development including HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. Gained hands-on experience in building responsive, user-friendly websites and web applications, with a focus on front-end and back-end integration, database management, and deployment. Developed practical projects to strengthen problem-solving, coding efficiency, and modern web development skills.
             </p>
           </div>
           <div data-aos="zoom-in-right" className="resume-item">
@@ -110,10 +95,7 @@ const Resume = () => {
             </p>
             <p>
               <em>
-                To be an expect employee and intend to work in a challenging
-                and competitive Environment in an organizational position
-                entrusted with higher responsibility and strategies decision
-                making authority, motivated self-driven creative.
+                Completed the National Skill Standard Basic Course Examination, focusing on foundational skills and competencies aligned with national standards. The course enhanced practical knowledge, problem-solving abilities, and technical proficiency, providing a solid base for professional development and workplace readiness.
               </em>
             </p>
           </div>

@@ -16,12 +16,7 @@ const About = () => {
     <div id="about" style={{ color: 'white', padding: '60px 0' }} className="customContainer">
       <h3 data-aos="flip-right" className="globalSectionHeadline">ABOUT</h3>
       <p className="about-about-info" data-aos="fade-right" >
-        The goal of my life as a career is to become a high quality web
-        developer. At this early stage of my career, my goal is to work in a
-        web development company in Bangladesh. One of the goals of my life is
-        to take my skills and qualifications to a unique level by acquiring
-        knowledge about different types of technology by spending extra time
-        besides work.
+        I am a passionate Full Stack Developer with experience in designing and developing responsive, user-friendly web applications using modern technologies such as React, Next.js, Node.js, Express, and MongoDB. I enjoy solving complex problems, optimizing performance, and creating scalable solutions that provide meaningful user experiences. Continuously learning and exploring new tools, frameworks, and best practices, I strive to deliver high-quality code and contribute effectively to any project. Dedicated, detail-oriented, and highly motivated, I aim to grow as a developer while making a positive impact through technology.
       </p>
       <Row gutter={[16, 16]}>
         <Col xs={24} lg={7} className="text-center">
@@ -37,9 +32,7 @@ const About = () => {
             Full Stack Developer & Web Desiginer
           </h4>
           <p data-aos="fade-up-right" className="pt-2">
-            Looking for a strong web developer position in a dynamic and
-            progressive company where my multitasking skills and ability to
-            meet deadlines effectively will be fully utilized.
+            Aspiring Full Stack Developer seeking an opportunity in a growth-oriented organization to apply expertise in front-end and back-end web development. Passionate about building scalable, user-friendly applications, eager to learn modern technologies, and contribute to the organization’s success.
           </p>
           <Row gutter={[16, 16]} data-aos="fade-down" >
             <Col xs={24} sm={12}>
@@ -94,11 +87,7 @@ const About = () => {
             </Col>
           </Row>
           <p data-aos="fade-down" className="pt-20">
-            I am looking for clear role and set of responsibilities.
-            Consistent feedback from management. Team members I can learn
-            from. A company with a good growth trajectory. Learn new things
-            and develop my skills. Challenging problems to work on. A
-            diverse team.
+            I am a Full Stack Developer skilled in building responsive and user-friendly web applications using React, Next.js, Node.js, and MongoDB. Passionate about learning new technologies and solving real-world problems, I focus on delivering high-quality, efficient, and scalable solutions.
           </p>
         </Col>
       </Row>
