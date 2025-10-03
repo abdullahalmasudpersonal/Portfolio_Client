@@ -15,7 +15,7 @@ const Counter = () => {
     { id: 1, name: "Language", target: 3, ex: 0, icon: faCode, fontsize: '20px', padding: "14.6px 12.5px", },
     { id: 2, name: "Fremwork", target: 5, ex: 0, icon: faGear, fontsize: '24px', padding: "13.5px 13.5px", },
     { id: 3, name: "Projects", target: 10, plus: '+', icon: faFileAlt, fontsize: '24px', padding: "12.5px 15.5px", },
-    { id: 4, name: "Certificate", target: 2, ex: 0, icon: faAward, fontsize: '28px', padding: "10px 14px", },
+    { id: 4, name: "Certificate", target: 3, ex: 0, icon: faAward, fontsize: '28px', padding: "10px 14px", },
   ]
 
   return (
