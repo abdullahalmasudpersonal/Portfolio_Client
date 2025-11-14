@@ -48,10 +48,10 @@ const Project = (project: TProject) => {
                         <Button style={{ paddingBottom:'2px', color: 'white', background: "#014688ff", marginRight: '8px' }} size="small" icon={<InfoCircleOutlined />}>Details</Button>
                     </a>
                     <a href={client_side_code} target="_blank" rel="noreferrer">
-                        <Button style={{ paddingBottom:'2px', color: 'white', background: "#014688ff", marginRight: '8px' }} size="small" icon={<GithubOutlined />}>Client</Button>
+                        <Button style={{ paddingBottom:'2px', color: 'white', background: "#014688ff", marginRight: '8px' }} size="small" icon={<GithubOutlined />}>Frontend</Button>
                     </a>
                     <a href={server_side_code} target="_blank" rel="noreferrer">
-                        <Button style={{ paddingBottom:'2px', color: 'white', background: "#014688ff", }} size="small" icon={<GithubOutlined />}>Client</Button>
+                        <Button style={{ paddingBottom:'2px', color: 'white', background: "#014688ff", }} size="small" icon={<GithubOutlined />}>Backend</Button>
                     </a>
                 </small>
             </div>

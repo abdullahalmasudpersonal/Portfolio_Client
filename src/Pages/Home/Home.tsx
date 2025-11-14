@@ -46,7 +46,7 @@ const Home = () => {
 
   const socialMedia = [
     { id: 1, iconName: 'fab fa-linkedin-in', href: 'https://www.linkedin.com/in/abdullahalmasud772', class: '', },
-    { id: 2, iconName: 'fab fa-github', href: 'https://github.com/abdullahalmasud772', class: '', },
+    { id: 2, iconName: 'fab fa-github', href: 'https://github.com/abdullahalmasudpersonal', class: '', },
     { id: 3, iconName: 'fab fa-stack-overflow', href: 'https://stackoverflow.com/users/19008268/abdullah-al-masud', class: '', },
     { id: 4, iconName: 'fab fa-facebook-f', href: 'https://www.facebook.com/abdullahalmasud772', class: 'facebook-padding', },
     { id: 5, iconName: 'fab fa-twitter', href: 'https://twitter.com/Abdulla14032407', class: '', },
