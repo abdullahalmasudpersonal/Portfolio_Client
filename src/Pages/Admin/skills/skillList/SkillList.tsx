@@ -1,4 +1,4 @@
-import { Button, Popconfirm, Table, TableColumnsType } from "antd";
+import { Button, Popconfirm, Switch, Table, TableColumnsType } from "antd";
 import {
   useDeleteSkillMutation,
   useGetSkillsQuery,
@@ -30,6 +30,12 @@ const SkillList = () => {
     image,
   }));
 
+  const showChangeSkill = (_id: string, checked: boolean) => {
+    console.log("ID:", _id);
+    console.log("Status:", checked);
+
+  };
+
   const columns: TableColumnsType<TSkill> = [
     {
       title: "Skill Name",
@@ -48,6 +54,15 @@ const SkillList = () => {
             }}
           />
           <span>{item.title}</span>
+        </div>
+      ),
+    },
+    {
+      title: "Show",
+      key: "show",
+      render: (item) => (
+        <div>
+          <Switch defaultChecked onChange={(checked) => showChangeSkill(item.key, checked)} />
         </div>
       ),
     },
