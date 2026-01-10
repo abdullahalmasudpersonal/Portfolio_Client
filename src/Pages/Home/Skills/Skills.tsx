@@ -13,7 +13,7 @@ const Skills = () => {
 
       <Row gutter={[16, 16]} >
         {
-          skillData?.data?.map((item: TSkill) => (
+          skillData?.data?.filter((item:TSkill)=>item.show)?.map((item: TSkill) => (
             <Col xs={12} sm={8} md={6} lg={6} xl={4} key={item.title} data-aos="fade-right" >
               <div title={item?.title} className="skillInfoDiv">
                 <img src={item?.image} alt="Slill Icon" style={{ width: "100px", height: "100px", objectFit: "contain" }}  />

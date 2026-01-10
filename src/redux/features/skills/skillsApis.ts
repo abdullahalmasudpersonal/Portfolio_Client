@@ -26,17 +26,20 @@ const SkillApis = baseApi.injectEndpoints({
       providesTags: [tagTypes.skill],
     }),
     updateSkill: builder.mutation({
-      query: ({id,data }) => ({
+      query: ({ id, data }) => ({
         url: `/skills/update-skill/${id}`,
         method: "PATCH",
-        body: data ,
+        body: data,
       }),
     }),
-    deleteSkill: builder.mutation({
-      query: (skillId) => ({
-        url: `/skills/${skillId}`,
-        method: "DELETE",
-      }),
+    updateSkillShowStatus: builder.mutation({
+      query: ({ id, show }) => {
+        return {
+          url: `/skills/update-visibility/${id}`,
+          method: "PATCH",
+          body: {show}, /* বুলিয়ান তাই অবজেক্ট আকারে পাঠাতে হবে */
+        };
+      },
       invalidatesTags: [tagTypes.skill],
     }),
     updateSkillSerialNumber: builder.mutation({
@@ -44,6 +47,13 @@ const SkillApis = baseApi.injectEndpoints({
         url: `/skills/update-skill-serial-number`,
         method: "PATCH",
         body: skills,
+      }),
+      invalidatesTags: [tagTypes.skill],
+    }),
+    deleteSkill: builder.mutation({
+      query: (skillId) => ({
+        url: `/skills/${skillId}`,
+        method: "DELETE",
       }),
       invalidatesTags: [tagTypes.skill],
     }),
@@ -55,6 +65,7 @@ export const {
   useGetSkillsQuery,
   useGetSingleSkillQuery,
   useUpdateSkillMutation,
-  useDeleteSkillMutation,
+  useUpdateSkillShowStatusMutation,
   useUpdateSkillSerialNumberMutation,
+  useDeleteSkillMutation,
 } = SkillApis;

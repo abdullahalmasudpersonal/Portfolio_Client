@@ -2,19 +2,22 @@ import { Button, Popconfirm, Switch, Table, TableColumnsType } from "antd";
 import {
   useDeleteSkillMutation,
   useGetSkillsQuery,
+  useUpdateSkillShowStatusMutation,
 } from "../../../../redux/features/skills/skillsApis";
 import { TSkill } from "../../../../types/skill.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const SkillList = () => {
   const navigate = useNavigate();
   const { data: skilldata } = useGetSkillsQuery({});
   const [deleteSkill] = useDeleteSkillMutation({});
+  const [updateSkillShowStatus] = useUpdateSkillShowStatusMutation({});
+  const [loadingSkillId, setLoadingSkillId] = useState<string | null>(null);
 
   const handleDeleteSkill = async (skillId: string) => {
-    console.log(skillId);
     const res = await deleteSkill(skillId).unwrap();
     if (res?.success) {
       toast.success("Delete skill successfully!", {
@@ -24,16 +27,33 @@ const SkillList = () => {
     }
   };
 
-  const dataTable = skilldata?.data?.map(({ _id, title, image }: TSkill) => ({
+  const dataTable = skilldata?.data?.map(({ _id, title, show, image }: TSkill) => ({
     key: _id,
     title,
+    show,
     image,
   }));
 
-  const showChangeSkill = (_id: string, checked: boolean) => {
-    console.log("ID:", _id);
-    console.log("Status:", checked);
+  const showChangeSkill = async (_id: string, checked: boolean) => {
+    try {
+      setLoadingSkillId(_id);
+      const res = await updateSkillShowStatus({
+        id: _id,
+        show: checked,
+      }).unwrap();
 
+      if (res?.success) {
+        toast.success("Skill visibility updated successfully!", {
+          duration: 1000,
+          position: "top-right",
+        });
+      }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      toast.error("Failed to update skill visibility");
+    } finally {
+      setLoadingSkillId(null);
+    }
   };
 
   const columns: TableColumnsType<TSkill> = [
@@ -62,7 +82,7 @@ const SkillList = () => {
       key: "show",
       render: (item) => (
         <div>
-          <Switch defaultChecked onChange={(checked) => showChangeSkill(item.key, checked)} />
+          <Switch loading={loadingSkillId === item._id} disabled={loadingSkillId === item._id} checked={item.show} onChange={(checked) => showChangeSkill(item.key, checked)} />
         </div>
       ),
     },
